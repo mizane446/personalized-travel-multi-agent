@@ -1,8 +1,8 @@
-# Hermes Travel v1.0.0 · Windows 源码发布版
+# 个性化出行方案多 Agent 系统 v1.0.0 · Windows 源码发布版
 
 最新补充：[杭州两日复杂任务](09-复杂任务展示.md)已完成真实 Desktop、模型、搜索和本地观测验收：18 次模型请求、10 次搜索、4 条 trace、46 条观测，全部闭合且无 ERROR；提供同次运行截图、两页 PDF 和原网页核对。下文早期小案例及合成测试保留各自测量边界。
 
-发布仓库：[mizane446/hermes-travel](https://github.com/mizane446/hermes-travel)。源码版本标签为 `travel-v1.0.0`。项目范围与最新进度以[根 README](../../README.md)为准。
+发布仓库：[mizane446/personalized-travel-multi-agent](https://github.com/mizane446/personalized-travel-multi-agent)。源码版本标签为 `travel-v1.0.0`。项目范围与最新进度以[根 README](../../README.md)为准。
 
 ## 交付内容
 

@@ -1,8 +1,8 @@
 <div align="center">
 
-![Hermes Travel — 让每一份旅行建议都有依据](docs/travel/images/release-hero-v2.png)
+![个性化出行方案多 Agent 系统 — 让每一份旅行建议都有依据](docs/travel/images/release-hero-v2.png)
 
-# Hermes Travel
+# 个性化出行方案多 Agent 系统
 
 **在 Hermes 原生桌面上，把偏好、搜索证据与旅行方案连接起来。**
 
@@ -92,8 +92,8 @@
 已验证：**Windows + PowerShell 7 + Git + Node.js 24**。Python 与后端依赖由 Hermes 官方 PM 管理；中文 PDF 使用系统微软雅黑。先克隆本仓库，进入仓库根目录，再执行：
 
 ```powershell
-git clone https://github.com/mizane446/hermes-travel.git
-cd hermes-travel
+git clone https://github.com/mizane446/personalized-travel-multi-agent.git
+cd personalized-travel-multi-agent
 $env:UV_INDEX_URL = 'https://pypi.org/simple'
 pwsh.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File ./travel_extensions/setup.ps1
 ```
