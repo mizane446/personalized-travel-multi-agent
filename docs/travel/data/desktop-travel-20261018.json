@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "mode": "real Desktop/Gateway; synthetic model/search",
+  "modelCalls": 9,
+  "childCalls": 2,
+  "reviews": 1,
+  "exportedFormats": [
+    "markdown",
+    "pdf"
+  ],
+  "hidden": true
+}

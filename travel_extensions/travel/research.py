@@ -118,9 +118,14 @@ class Research:
         with self.wiki.connect() as db:
             db.execute('UPDATE jobs SET handle=? WHERE id=?', (json.dumps(handle), job))
 
-    def finish(self, job, result):
+    def finish(self, job, result, *, expected_revision=None):
         with self.wiki.connect() as db:
+            if expected_revision is not None:
+                return bool(db.execute('''UPDATE jobs SET result=? WHERE id=? AND cancelled=0 AND revision=?
+                    AND revision=(SELECT revision FROM requirements WHERE session=jobs.session)''',
+                    (json.dumps(result, ensure_ascii=False), job, expected_revision)).rowcount)
             db.execute('UPDATE jobs SET result=? WHERE id=?', (json.dumps(result, ensure_ascii=False), job))
+        return True
 
     def claim_review(self, job):
         with self.wiki.connect() as db:
@@ -181,6 +186,8 @@ class ResearchTools:
     def poll(self, state, job):
         if not job['handle']:
             return {'state': 'STARTING'}
+        # Host-owned bounded wait avoids paying for a model round for every poll.
+        self.ctx.subagent_lifecycle.wait(json.loads(job['handle']), timeout_seconds=15)
         result = self.ctx.subagent_lifecycle.result(json.loads(job['handle']))
         if not result.ready and result.terminal_state.value != 'UNKNOWN':
             return {'state': result.terminal_state.value, 'job_id': job['id']}
@@ -203,14 +210,15 @@ class ResearchTools:
                 try:
                     reviewed = self.ctx.llm.complete_structured(instructions=REVIEW,
                         input=[PluginLlmTextInput(text=json.dumps(payload, ensure_ascii=False))],
-                        json_mode=True, max_tokens=1600, timeout=45, purpose='travel-review')
+                        json_mode=True, max_tokens=1600, timeout=45, purpose='travel-review', task='travel_review')
                     answer = validate_review(reviewed.parsed, sources)
                 except Exception:
                     answer = {'accepted': [], 'complete': False, 'feedback': '审查调用或来源校验失败；未交付未经验证内容'}
         # Recheck after the model call: a new user turn can arrive while reviewing.
         if state.get(job['session'], job['id'])['cancelled']:
             return {'state': 'CANCELLED'}
-        state.finish(job['id'], answer)
+        if not state.finish(job['id'], answer, expected_revision=job['revision']):
+            return {'state': 'STALE_OR_CANCELLED'}
         return answer
 
     def child_started(self, parent_session_id=None, child_session_id=None, child_goal='', **kwargs):
@@ -220,9 +228,9 @@ class ResearchTools:
 
     def guard(self, tool_name=None, session_id=None, **kwargs):
         if tool_name == 'delegate_task':
-            return {'block': True, 'reason': '旅行模式使用 travel_research，保持搜索预算和来源审查。'}
+            return {'action': 'block', 'message': '旅行模式使用 travel_research，保持搜索预算和来源审查。'}
         if tool_name == 'web_search' and not self.state().reserve(session_id):
-            return {'block': True, 'reason': '该搜索没有活动旅行子任务、已过期/取消，或五次额度已用完。'}
+            return {'action': 'block', 'message': '该搜索没有活动旅行子任务、已过期/取消，或五次额度已用完。'}
         return None
 
     def searched(self, tool_name=None, session_id=None, result=None, **kwargs):

@@ -27,6 +27,7 @@ def test_budget_scope_late_results_and_retry_limit(tmp_path):
     with pytest.raises(ValueError, match='轮'):
         research.create('a', 'food', '杭州', '第四轮')
     research.begin('a', 'r2')
+    assert not research.finish(job, {'complete': True}, expected_revision='r1')
     with pytest.raises(ValueError, match='过期'):
         research.get('a', job)
     assert research.reserve('child-1') is False
@@ -53,6 +54,8 @@ def test_review_source_resolution_and_duplicate_removal():
 def test_native_adapter_launch_poll_cancellation_and_restart(tmp_path):
     from travel_extensions.travel.research import ResearchTools
     class Lifecycle:
+        def wait(self, handle, timeout_seconds):
+            assert timeout_seconds == 15
         def launch(self, request):
             assert request.allowed_toolsets == ('search',)
             return SimpleNamespace(to_dict=lambda: {'id': 'fixture'})
@@ -94,7 +97,8 @@ def test_cancel_during_review_never_delivers(tmp_path):
     state.child('a', job, 'c')
     state.evidence('c', {'data': {'web': [{'url': 'https://example.org/source'}]}})
     state.save_handle(job, {})
-    lifecycle = SimpleNamespace(result=lambda h: SimpleNamespace(ready=True, terminal_state=SimpleNamespace(value='SUCCEEDED'), summary='fixture'))
+    lifecycle = SimpleNamespace(wait=lambda *a, **kw: None,
+        result=lambda h: SimpleNamespace(ready=True, terminal_state=SimpleNamespace(value='SUCCEEDED'), summary='fixture'))
     def reviewing(**kwargs):
         state.cancel(job)
         return SimpleNamespace(parsed={'accepted': [{'text': 'x', 'sources': [1]}], 'complete': True, 'feedback': ''})

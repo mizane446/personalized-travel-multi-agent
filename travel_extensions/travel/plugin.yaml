@@ -5,8 +5,9 @@ author: zachary.zou
 provides_tools:
   - travel_preferences
   - travel_research
+  - travel_plan
 provides_hooks:
   - pre_llm_call
   - pre_tool_call
-  - post_tool_call
+  - transform_tool_result
   - subagent_start

@@ -30,6 +30,7 @@ act/
 .uv-cache/
 compose.hermes.local.yml
 export*
+!travel_extensions/verification/export_example.py
 __pycache__/model_tools.cpython-310.pyc
 __pycache__/web_tools.cpython-310.pyc
 logs/
@@ -47,6 +48,8 @@ tmp/
 temp_vision_images/
 hermes-*/*
 examples/
+!docs/travel/examples/
+!docs/travel/examples/**
 # Skills ship worked examples as support files; the bare pattern above is for dataset dumps.
 !optional-skills/**/examples/
 !skills/**/examples/

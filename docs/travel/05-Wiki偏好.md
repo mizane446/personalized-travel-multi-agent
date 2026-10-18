@@ -27,3 +27,5 @@ Hermes 原版已有 [MemoryProvider](https://github.com/NousResearch/hermes-agen
 [原始数据](data/wiki-integrity-20261018.json)来自 4 个**人工构造的错误写入**：无校验文本文件拦截 0/4，本实现拦截 4/4；冲突两条均保留。复现：`python -m travel_extensions.verification.compare_wiki <新的输出.json>`。这不是对 Hermes 原生 memory 工具的完整对比，也不是“模型幻觉下降 100%”。
 
 程序可保证引用存在，不能保证引用被正确理解。截取“我不喜欢辣”中的“喜欢辣”仍可能产生语义错误；不同表达也可能被保守地判为冲突。没有用确定性写入测试代替真实模型效果评估。当前按需提示模型提取长期偏好，不保证每条自然语言都自动提取成功。
+
+写入前复用固定版本上游 `agent.redact.redact_sensitive_text(force=True)` 过滤已识别的凭据；合成 API key 的落盘拒绝已测试。此函数属于内部接口，插件检查会提示兼容性警告，升级 Hermes 时必须重新测试。过滤器不能识别所有任意字符串密钥，私人原话目录仍须保持 Git 忽略。

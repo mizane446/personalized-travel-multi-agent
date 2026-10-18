@@ -1,0 +1,6 @@
+[project]
+name = "hermes-travel-enhancements"
+version = "1.0.0"
+description = "Evidence-bound travel tools for Hermes"
+requires-python = ">=3.14"
+dependencies = ["reportlab>=4.4,<5"]

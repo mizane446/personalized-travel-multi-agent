@@ -27,3 +27,6 @@ def test_real_discovery_user_only_and_session_scope(tmp_path, monkeypatch):
     assert wiki.source_for('child', 't2') is None
     invoke_hook('pre_llm_call', session_id='a', turn_id='t3', user_message='/忘记偏好 ' + result['fact_id'])
     assert wiki.facts()[0]['status'] == 'forgotten'
+    invoke_hook('pre_llm_call', session_id='a', turn_id='secret', user_message='api_key=private-key-for-test-123456789')
+    raw = (tmp_path / 'travel/wiki/Raw' / (wiki.source_for('a', 'secret') + '.md')).read_text('utf-8')
+    assert 'private-key-for-test-123456789' not in raw

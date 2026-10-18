@@ -13,6 +13,8 @@ def store():
 def preference_context(session_id=None, turn_id=None, user_message=None, parent_session_id=None, **kwargs):
     if parent_session_id or not session_id or not isinstance(user_message, str) or not user_message.strip():
         return None
+    from agent.redact import redact_sensitive_text
+    user_message = redact_sensitive_text(user_message, force=True, redact_url_credentials=True)
     wiki = store()
     source = wiki.record(session_id, turn_id or identifier(user_message), user_message)
     from .research import Research
@@ -51,10 +53,22 @@ def preference_tool(args, session_id=None, **kwargs):
 def register_tools(ctx):
     from .research import Research, ResearchTools
     research = ResearchTools(ctx, lambda: Research(store()))
+    ctx.register_auxiliary_task('travel_review', display_name='旅行审查',
+        description='无工具旅行资料审查；可独立选择 Flash 模型', defaults={'timeout': 45})
     ctx.register_hook('pre_llm_call', preference_context)
     ctx.register_hook('subagent_start', research.child_started)
     ctx.register_hook('pre_tool_call', research.guard)
-    ctx.register_hook('post_tool_call', research.searched)
+    # Public lifecycle launches inside a parent tool. In this pinned host its
+    # inherited observer-suppression scope skips child post_tool_call; the result
+    # transform still runs before delivery. Return None to preserve the result.
+    ctx.register_hook('transform_tool_result', research.searched)
+    ctx.register_tool(name='travel_plan', toolset='travel', handler=plan_tool,
+        schema={'name': 'travel_plan', 'description': '从已审查任务保存新版本方案；读取历史版本；不调用模型导出 Markdown/PDF。',
+                'parameters': {'type': 'object', 'properties': {
+                    'action': {'type': 'string', 'enum': ['save', 'read', 'export']},
+                    'title': {'type': 'string'}, 'job_ids': {'type': 'array', 'items': {'type': 'string'}},
+                    'version': {'type': 'integer', 'minimum': 1},
+                    'format': {'type': 'string', 'enum': ['markdown', 'pdf', 'both']}}, 'required': ['action']}})
     ctx.register_tool(name='travel_research', toolset='travel', handler=research.tool,
         schema={'name': 'travel_research', 'description': '启动/查询/取消原生旅行检索子 Agent。先澄清目的地和需求。每方向五次搜索、最多两轮修正。必须 poll 取得审查结果才可使用。',
                 'parameters': {'type': 'object', 'properties': {
@@ -68,3 +82,25 @@ def register_tools(ctx):
                     'action': {'type': 'string', 'enum': ['read', 'propose']},
                     'source_id': {'type': 'string'}, 'key': {'type': 'string', 'enum': list(KEYS)},
                     'quote': {'type': 'string'}}, 'required': ['action']}})
+
+
+def plan_tool(args, session_id=None, **kwargs):
+    from .plans import Plans
+    from .research import Research
+    try:
+        if not session_id:
+            raise ValueError('缺少宿主会话')
+        plans = Plans(Research(store()))
+        if args.get('action') == 'save':
+            result = plans.save(session_id, args.get('title'), args.get('job_ids'))
+        elif args.get('action') == 'read':
+            result = plans.load(session_id, args.get('version'))
+        elif args.get('action') == 'export':
+            result = {key: str(value) for key, value in plans.export(session_id, args.get('version'), args.get('format', 'both')).items()}
+        else:
+            raise ValueError('action 必须是 save/read/export')
+        return json.dumps(result, ensure_ascii=False)
+    except (ValueError, TypeError) as exc:
+        return json.dumps({'error': str(exc)}, ensure_ascii=False)
+    except ImportError:
+        return json.dumps({'error': 'PDF 依赖未就绪；通过 Hermes PM 安装本插件依赖'})
