@@ -1,0 +1,8 @@
+[
+  {"id":"attraction","query":"杭州西湖景区 官方 开放时间","purpose":"景区开放信息"},
+  {"id":"food","query":"杭州 传统特色美食 官方 介绍","purpose":"本地饮食资料"},
+  {"id":"hotel","query":"杭州 住宿 消费 提示 官方","purpose":"住宿消费注意事项"},
+  {"id":"museum","query":"杭州博物馆 官方 预约 免费","purpose":"免费与预约约束"},
+  {"id":"accessibility","query":"杭州西湖 无障碍 游览 官方","purpose":"无障碍需求"},
+  {"id":"allergy","query":"花生过敏 外出就餐 注意事项 医院","purpose":"过敏安全资料"}
+]

@@ -1,0 +1,629 @@
+{
+  "date": "2026-10-18",
+  "kind": "real_search_not_agent_e2e",
+  "provider": "Doubao direct HTTP",
+  "count_per_query": 5,
+  "query_rewrite": false,
+  "trials": 3,
+  "case_count": 6,
+  "request_count": 18,
+  "estimated_cny": 0.36,
+  "actual_charge": null,
+  "median_seconds": 0.41745,
+  "p95_seconds_nearest_rank": 1.1809,
+  "successes": 18,
+  "rows": [
+    {
+      "case": "attraction",
+      "trial": 1,
+      "seconds": 0.8646,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://www.hangzhou.gov.cn/col/col1229063429/art/2026/art_07da041e962341a1b8cc75903ea05a9c.html",
+          "title": "杭州市收费公园名录及开放信息公示",
+          "summary_chars": 1649
+        },
+        {
+          "url": "https://westlake.hangzhou.gov.cn/col/col1639431/art/2025/art_5aed8195636c49c399789c699d7e1156.html",
+          "title": "灵隐飞来峰景区12月1日起全面免票",
+          "summary_chars": 1176
+        },
+        {
+          "url": "https://wgly.hangzhou.gov.cn/cn/xwdt/art/2026/art_bafa011ed9604487a6e83dce603bb2d9.html",
+          "title": "杭州“彼岸星河”开了!4万人围观",
+          "summary_chars": 863
+        },
+        {
+          "url": "http://m.ctrip.com/webapp/you/sight/hangzhou14/49894.html?ext-shelfPage=ctrip_shelf_seo",
+          "title": "",
+          "summary_chars": 558
+        },
+        {
+          "url": "https://m.flight.qunar.com/shark/active/cc16868c594f193f4d7f198d810db018?sightId=2048661465&channel=touch",
+          "title": "杭州西湖博物馆(总馆)",
+          "summary_chars": 495
+        }
+      ]
+    },
+    {
+      "case": "food",
+      "trial": 1,
+      "seconds": 0.6526,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://wgly.hangzhou.gov.cn/art/2024/3/6/art_1229733901_58953544.html",
+          "title": "百县千碗",
+          "summary_chars": 1173
+        },
+        {
+          "url": "http://hznews.hangzhou.com.cn/chengshi/content/2024-10/20/content_8802356.htm",
+          "title": "杭州十大非遗特色菜，你吃过吗?-杭州新闻中心-杭州网",
+          "summary_chars": 582
+        },
+        {
+          "url": "https://wgly.hangzhou.gov.cn/art/2024/3/6/art_1229733901_58953546.html",
+          "title": "经典杭帮菜",
+          "summary_chars": 1246
+        },
+        {
+          "url": "https://k.sina.com.cn/article_7879777060_1d5abdb2406801ay3s.html",
+          "title": "介绍一下杭州的特色餐厅|杭州市|龙井|西子|红梅|虾_新浪新闻",
+          "summary_chars": 678
+        },
+        {
+          "url": "http://big5.cctv.com/gate/big5/www.cctv.com/life/meishi/090503_89.html",
+          "title": "杭州地方小吃",
+          "summary_chars": 994
+        }
+      ]
+    },
+    {
+      "case": "hotel",
+      "trial": 1,
+      "seconds": 1.1763,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://wgly.hangzhou.gov.cn/tc/lygl/tyhz/zs/msgl/index.html",
+          "title": "美宿攻略",
+          "summary_chars": 945
+        },
+        {
+          "url": "https://wgly.hangzhou.gov.cn/cn/xwdt/art/2026/art_1a6b18a37d13411f9121fe59750a41f0.html",
+          "title": "秋游杭州 渐入佳境 | 中秋国庆期间，杭州文旅整合推出超400项优惠",
+          "summary_chars": 1292
+        },
+        {
+          "url": "http://hznews.hangzhou.com.cn/chengshi/content/2026-05/27/content_9229648.htm",
+          "title": "好消息!最高6000元，杭州发放新一轮补贴、消费券!",
+          "summary_chars": 736
+        },
+        {
+          "url": "http://hznews.hangzhou.com.cn/jingji/content/2026-03/25/content_9196691.htm",
+          "title": "杭州一地发放文旅消费券",
+          "summary_chars": 564
+        },
+        {
+          "url": "https://www.hilton.com.cn/zh-hk/locations/china/zhejiang-hangzhou",
+          "title": "杭州-酒店推荐",
+          "summary_chars": 743
+        }
+      ]
+    },
+    {
+      "case": "museum",
+      "trial": 1,
+      "seconds": 0.5862,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://art.icity.ly/events/jin79v6",
+          "title": "翰墨丹青:馆藏书画陈列 - 每日环球展览 - iMuseum",
+          "summary_chars": 366
+        },
+        {
+          "url": "https://weitoutiao.zjurl.cn/rogue/topic_share/?concern_id=1690639239438396&prevent_activate=1",
+          "title": "",
+          "summary_chars": 1318
+        },
+        {
+          "url": "http://nb.ncha.gov.cn/museumdetail.html?msg=a0929ac9da0943039c7d47ba45e3e18b&nianfen=2021",
+          "title": "杭州博物馆(杭州博物院(筹))",
+          "summary_chars": 1142
+        },
+        {
+          "url": "http://www.365135.com/lygl/45628.shtml",
+          "title": "杭州博物馆旅游攻略:读懂“人间天堂”杭州的钥匙 - 中国旅游资讯网365135.COM",
+          "summary_chars": 1284
+        },
+        {
+          "url": "https://wgly.hangzhou.gov.cn/art/2023/8/21/art_1229737053_58949275.html",
+          "title": "Hangzhou Museum",
+          "summary_chars": 895
+        }
+      ]
+    },
+    {
+      "case": "accessibility",
+      "trial": 1,
+      "seconds": 1.1809,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://westlake.hangzhou.gov.cn/art/2023/10/18/art_1639431_59044545.html",
+          "title": "飞飞“飞”到西湖边 游船换上“新皮肤”",
+          "summary_chars": 773
+        },
+        {
+          "url": "https://www.mct.gov.cn/whzx/qgwhxxlb/zj/202309/t20230920_947367.htm",
+          "title": "杭州推出5条无障碍旅游线路",
+          "summary_chars": 454
+        },
+        {
+          "url": "https://westlake.hangzhou.gov.cn/art/2025/9/18/art_1639430_59054240.html",
+          "title": "喜报！钱王祠景区入选浙江省公共场所无障碍环境建设典型案例",
+          "summary_chars": 649
+        },
+        {
+          "url": "https://k.sina.cn/article_7857141524_1d452771401903xrpo.html",
+          "title": "既有文化味又有烟火气，杭州推出首批五条无障碍旅游线路|杭州市|西湖|杭州市文化广电旅游局|杭州市萧山区|一日游_新浪新闻",
+          "summary_chars": 1259
+        },
+        {
+          "url": "http://www.chinanews.com.cn/sh/2025/05-20/10419135.shtml",
+          "title": "从“有爱无碍”看见浙江共富的“一个都不能少”-中新网",
+          "summary_chars": 1216
+        }
+      ]
+    },
+    {
+      "case": "allergy",
+      "trial": 1,
+      "seconds": 1.0464,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://www.mayoclinic.org/zh-hans/diseases-conditions/food-allergy/symptoms-causes/syc-20355095?p=1",
+          "title": "症状与病因",
+          "summary_chars": 1559
+        },
+        {
+          "url": "https://www.mayoclinic.org/zh-hans/diseases-conditions/peanut-allergy/diagnosis-treatment/drc-20376181",
+          "title": "花生过敏 - 诊断与治疗 - 妙佑医疗国际",
+          "summary_chars": 1230
+        },
+        {
+          "url": "https://www.nlx.gov.cn/openness/grassroots/6605511/40282336.html",
+          "title": "【消费提示】国庆、中秋食品安全消费提示、警示_芜湖市政务公开平台",
+          "summary_chars": 1163
+        },
+        {
+          "url": "http://m.toutiao.com/group/7527499971986211363/?upstream_biz=VolcEngine",
+          "title": "餐桌上的 “隐形杀手”：警惕麦麸、花生、坚果过敏，这些救命知识要知道",
+          "summary_chars": 451
+        },
+        {
+          "url": "https://www.yxjl.org/cms/article/16636574260602960003/17691385078530010521",
+          "title": "【科普文章】宋风玲:过敏与不耐受",
+          "summary_chars": 1242
+        }
+      ]
+    },
+    {
+      "case": "attraction",
+      "trial": 2,
+      "seconds": 0.3608,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://www.hangzhou.gov.cn/col/col1229063429/art/2026/art_07da041e962341a1b8cc75903ea05a9c.html",
+          "title": "杭州市收费公园名录及开放信息公示",
+          "summary_chars": 1649
+        },
+        {
+          "url": "https://westlake.hangzhou.gov.cn/col/col1639431/art/2025/art_5aed8195636c49c399789c699d7e1156.html",
+          "title": "灵隐飞来峰景区12月1日起全面免票",
+          "summary_chars": 1176
+        },
+        {
+          "url": "https://wgly.hangzhou.gov.cn/cn/xwdt/art/2026/art_bafa011ed9604487a6e83dce603bb2d9.html",
+          "title": "杭州“彼岸星河”开了!4万人围观",
+          "summary_chars": 863
+        },
+        {
+          "url": "http://m.ctrip.com/webapp/you/sight/hangzhou14/49894.html?ext-shelfPage=ctrip_shelf_seo",
+          "title": "",
+          "summary_chars": 558
+        },
+        {
+          "url": "https://m.flight.qunar.com/shark/active/cc16868c594f193f4d7f198d810db018?sightId=2048661465&channel=touch",
+          "title": "杭州西湖博物馆(总馆)",
+          "summary_chars": 495
+        }
+      ]
+    },
+    {
+      "case": "food",
+      "trial": 2,
+      "seconds": 0.419,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://wgly.hangzhou.gov.cn/en/discoverhangzhou/thingstodo/cuisine/All/index.html",
+          "title": "杭州市文化广电旅游局 All",
+          "summary_chars": 1250
+        },
+        {
+          "url": "https://wgly.hangzhou.gov.cn/art/2024/3/6/art_1229733901_58953545.html",
+          "title": "特色风味",
+          "summary_chars": 754
+        },
+        {
+          "url": "http://www.hangzhouds.org.cn/shihuahangz/info.aspx?itemid=7383",
+          "title": "历史文化名城丨史话杭州·物阜民丰:闻香下马知味观",
+          "summary_chars": 416
+        },
+        {
+          "url": "https://sww.hangzhou.gov.cn/col/col1229307777/art/2026/art_3b6ac865555b4588bdac4cd8589f5130.html",
+          "title": "擦亮美食金名片 赋能消费新活力“食在杭州”杭帮菜创新发展大会隆重举办",
+          "summary_chars": 1014
+        },
+        {
+          "url": "http://hznews.hangzhou.com.cn/chengshi/content/2024-10/20/content_8802356.htm",
+          "title": "杭州十大非遗特色菜，你吃过吗?-杭州新闻中心-杭州网",
+          "summary_chars": 582
+        }
+      ]
+    },
+    {
+      "case": "hotel",
+      "trial": 2,
+      "seconds": 0.4159,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://wgly.hangzhou.gov.cn/tc/lygl/tyhz/zs/msgl/index.html",
+          "title": "美宿攻略",
+          "summary_chars": 945
+        },
+        {
+          "url": "https://wgly.hangzhou.gov.cn/cn/xwdt/art/2026/art_1a6b18a37d13411f9121fe59750a41f0.html",
+          "title": "秋游杭州 渐入佳境 | 中秋国庆期间，杭州文旅整合推出超400项优惠",
+          "summary_chars": 1292
+        },
+        {
+          "url": "http://hznews.hangzhou.com.cn/chengshi/content/2026-05/27/content_9229648.htm",
+          "title": "好消息!最高6000元，杭州发放新一轮补贴、消费券!",
+          "summary_chars": 736
+        },
+        {
+          "url": "http://hznews.hangzhou.com.cn/jingji/content/2026-03/25/content_9196691.htm",
+          "title": "杭州一地发放文旅消费券",
+          "summary_chars": 564
+        },
+        {
+          "url": "https://www.hilton.com.cn/zh-hk/locations/china/zhejiang-hangzhou",
+          "title": "杭州-酒店推荐",
+          "summary_chars": 743
+        }
+      ]
+    },
+    {
+      "case": "museum",
+      "trial": 2,
+      "seconds": 0.4916,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://weitoutiao.zjurl.cn/rogue/topic_share/?concern_id=1690639239438396&prevent_activate=1",
+          "title": "",
+          "summary_chars": 1316
+        },
+        {
+          "url": "https://weitoutiao.zjurl.cn/rogue/topic_share/?concern_id=1640000016264222&prevent_activate=1",
+          "title": "",
+          "summary_chars": 875
+        },
+        {
+          "url": "https://edu.hangzhou.com.cn/2024rdzt/zdagzyjd/content/content_8763527.html?k=0",
+          "title": "杭州博物馆:一馆看尽杭州八千年文明史和五千年建城史--走读杭州百个爱国主义教育基地-教育频道-杭州网",
+          "summary_chars": 109
+        },
+        {
+          "url": "https://art.icity.ly/events/jin79v6",
+          "title": "翰墨丹青:馆藏书画陈列 - 每日环球展览 - iMuseum",
+          "summary_chars": 370
+        },
+        {
+          "url": "https://msb.zjol.com.cn/html/2020-03/21/content_3840979.htm",
+          "title": "杭州博物馆",
+          "summary_chars": 606
+        }
+      ]
+    },
+    {
+      "case": "accessibility",
+      "trial": 2,
+      "seconds": 0.3249,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://westlake.hangzhou.gov.cn/art/2023/10/18/art_1639431_59044545.html",
+          "title": "飞飞“飞”到西湖边 游船换上“新皮肤”",
+          "summary_chars": 773
+        },
+        {
+          "url": "https://www.mct.gov.cn/whzx/qgwhxxlb/zj/202309/t20230920_947367.htm",
+          "title": "杭州推出5条无障碍旅游线路",
+          "summary_chars": 454
+        },
+        {
+          "url": "https://westlake.hangzhou.gov.cn/art/2025/9/18/art_1639430_59054240.html",
+          "title": "喜报！钱王祠景区入选浙江省公共场所无障碍环境建设典型案例",
+          "summary_chars": 649
+        },
+        {
+          "url": "https://k.sina.cn/article_7857141524_1d452771401903xrpo.html",
+          "title": "既有文化味又有烟火气，杭州推出首批五条无障碍旅游线路|杭州市|西湖|杭州市文化广电旅游局|杭州市萧山区|一日游_新浪新闻",
+          "summary_chars": 1259
+        },
+        {
+          "url": "http://www.chinanews.com.cn/sh/2025/05-20/10419135.shtml",
+          "title": "从“有爱无碍”看见浙江共富的“一个都不能少”-中新网",
+          "summary_chars": 1216
+        }
+      ]
+    },
+    {
+      "case": "allergy",
+      "trial": 2,
+      "seconds": 0.4,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://www.mayoclinic.org/zh-hans/diseases-conditions/food-allergy/symptoms-causes/syc-20355095?p=1",
+          "title": "症状与病因",
+          "summary_chars": 1559
+        },
+        {
+          "url": "https://www.mayoclinic.org/zh-hans/diseases-conditions/peanut-allergy/diagnosis-treatment/drc-20376181",
+          "title": "花生过敏 - 诊断与治疗 - 妙佑医疗国际",
+          "summary_chars": 1230
+        },
+        {
+          "url": "https://www.nlx.gov.cn/openness/grassroots/6605511/40282336.html",
+          "title": "【消费提示】国庆、中秋食品安全消费提示、警示_芜湖市政务公开平台",
+          "summary_chars": 1163
+        },
+        {
+          "url": "http://m.toutiao.com/group/7527499971986211363/?upstream_biz=VolcEngine",
+          "title": "餐桌上的 “隐形杀手”：警惕麦麸、花生、坚果过敏，这些救命知识要知道",
+          "summary_chars": 451
+        },
+        {
+          "url": "https://www.yxjl.org/cms/article/16636574260602960003/17691385078530010521",
+          "title": "【科普文章】宋风玲:过敏与不耐受",
+          "summary_chars": 1242
+        }
+      ]
+    },
+    {
+      "case": "attraction",
+      "trial": 3,
+      "seconds": 0.3822,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://www.hangzhou.gov.cn/col/col1229063429/art/2026/art_07da041e962341a1b8cc75903ea05a9c.html",
+          "title": "杭州市收费公园名录及开放信息公示",
+          "summary_chars": 1649
+        },
+        {
+          "url": "https://westlake.hangzhou.gov.cn/col/col1639431/art/2025/art_5aed8195636c49c399789c699d7e1156.html",
+          "title": "灵隐飞来峰景区12月1日起全面免票",
+          "summary_chars": 1176
+        },
+        {
+          "url": "https://wgly.hangzhou.gov.cn/cn/xwdt/art/2026/art_bafa011ed9604487a6e83dce603bb2d9.html",
+          "title": "杭州“彼岸星河”开了!4万人围观",
+          "summary_chars": 863
+        },
+        {
+          "url": "http://m.ctrip.com/webapp/you/sight/hangzhou14/49894.html?ext-shelfPage=ctrip_shelf_seo",
+          "title": "",
+          "summary_chars": 558
+        },
+        {
+          "url": "https://m.flight.qunar.com/shark/active/cc16868c594f193f4d7f198d810db018?sightId=2048661465&channel=touch",
+          "title": "杭州西湖博物馆(总馆)",
+          "summary_chars": 495
+        }
+      ]
+    },
+    {
+      "case": "food",
+      "trial": 3,
+      "seconds": 0.3138,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://wgly.hangzhou.gov.cn/en/discoverhangzhou/thingstodo/cuisine/All/index.html",
+          "title": "杭州市文化广电旅游局 All",
+          "summary_chars": 1250
+        },
+        {
+          "url": "https://wgly.hangzhou.gov.cn/art/2024/3/6/art_1229733901_58953545.html",
+          "title": "特色风味",
+          "summary_chars": 754
+        },
+        {
+          "url": "http://www.hangzhouds.org.cn/shihuahangz/info.aspx?itemid=7383",
+          "title": "历史文化名城丨史话杭州·物阜民丰:闻香下马知味观",
+          "summary_chars": 416
+        },
+        {
+          "url": "https://sww.hangzhou.gov.cn/col/col1229307777/art/2026/art_3b6ac865555b4588bdac4cd8589f5130.html",
+          "title": "擦亮美食金名片 赋能消费新活力“食在杭州”杭帮菜创新发展大会隆重举办",
+          "summary_chars": 1014
+        },
+        {
+          "url": "http://hznews.hangzhou.com.cn/chengshi/content/2024-10/20/content_8802356.htm",
+          "title": "杭州十大非遗特色菜，你吃过吗?-杭州新闻中心-杭州网",
+          "summary_chars": 582
+        }
+      ]
+    },
+    {
+      "case": "hotel",
+      "trial": 3,
+      "seconds": 0.4149,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://wgly.hangzhou.gov.cn/tc/lygl/tyhz/zs/msgl/index.html",
+          "title": "美宿攻略",
+          "summary_chars": 945
+        },
+        {
+          "url": "https://wgly.hangzhou.gov.cn/cn/xwdt/art/2026/art_1a6b18a37d13411f9121fe59750a41f0.html",
+          "title": "秋游杭州 渐入佳境 | 中秋国庆期间，杭州文旅整合推出超400项优惠",
+          "summary_chars": 1292
+        },
+        {
+          "url": "http://hznews.hangzhou.com.cn/chengshi/content/2026-05/27/content_9229648.htm",
+          "title": "好消息!最高6000元，杭州发放新一轮补贴、消费券!",
+          "summary_chars": 736
+        },
+        {
+          "url": "http://hznews.hangzhou.com.cn/jingji/content/2026-03/25/content_9196691.htm",
+          "title": "杭州一地发放文旅消费券",
+          "summary_chars": 564
+        },
+        {
+          "url": "https://www.hilton.com.cn/zh-hk/locations/china/zhejiang-hangzhou",
+          "title": "杭州-酒店推荐",
+          "summary_chars": 743
+        }
+      ]
+    },
+    {
+      "case": "museum",
+      "trial": 3,
+      "seconds": 0.3952,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://weitoutiao.zjurl.cn/rogue/topic_share/?concern_id=1690639239438396&prevent_activate=1",
+          "title": "",
+          "summary_chars": 1316
+        },
+        {
+          "url": "https://weitoutiao.zjurl.cn/rogue/topic_share/?concern_id=1640000016264222&prevent_activate=1",
+          "title": "",
+          "summary_chars": 875
+        },
+        {
+          "url": "https://edu.hangzhou.com.cn/2024rdzt/zdagzyjd/content/content_8763527.html?k=0",
+          "title": "杭州博物馆:一馆看尽杭州八千年文明史和五千年建城史--走读杭州百个爱国主义教育基地-教育频道-杭州网",
+          "summary_chars": 109
+        },
+        {
+          "url": "https://art.icity.ly/events/jin79v6",
+          "title": "翰墨丹青:馆藏书画陈列 - 每日环球展览 - iMuseum",
+          "summary_chars": 370
+        },
+        {
+          "url": "https://msb.zjol.com.cn/html/2020-03/21/content_3840979.htm",
+          "title": "杭州博物馆",
+          "summary_chars": 606
+        }
+      ]
+    },
+    {
+      "case": "accessibility",
+      "trial": 3,
+      "seconds": 0.5304,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://westlake.hangzhou.gov.cn/art/2023/10/18/art_1639431_59044545.html",
+          "title": "飞飞“飞”到西湖边 游船换上“新皮肤”",
+          "summary_chars": 773
+        },
+        {
+          "url": "https://www.mct.gov.cn/whzx/qgwhxxlb/zj/202309/t20230920_947367.htm",
+          "title": "杭州推出5条无障碍旅游线路",
+          "summary_chars": 454
+        },
+        {
+          "url": "https://westlake.hangzhou.gov.cn/art/2025/9/18/art_1639430_59054240.html",
+          "title": "喜报！钱王祠景区入选浙江省公共场所无障碍环境建设典型案例",
+          "summary_chars": 649
+        },
+        {
+          "url": "https://k.sina.cn/article_7857141524_1d452771401903xrpo.html",
+          "title": "既有文化味又有烟火气，杭州推出首批五条无障碍旅游线路|杭州市|西湖|杭州市文化广电旅游局|杭州市萧山区|一日游_新浪新闻",
+          "summary_chars": 1259
+        },
+        {
+          "url": "http://www.chinanews.com.cn/sh/2025/05-20/10419135.shtml",
+          "title": "从“有爱无碍”看见浙江共富的“一个都不能少”-中新网",
+          "summary_chars": 1216
+        }
+      ]
+    },
+    {
+      "case": "allergy",
+      "trial": 3,
+      "seconds": 0.301,
+      "success": true,
+      "count": 5,
+      "sources": [
+        {
+          "url": "https://www.mayoclinic.org/zh-hans/diseases-conditions/food-allergy/symptoms-causes/syc-20355095?p=1",
+          "title": "症状与病因",
+          "summary_chars": 1559
+        },
+        {
+          "url": "https://www.mayoclinic.org/zh-hans/diseases-conditions/peanut-allergy/diagnosis-treatment/drc-20376181",
+          "title": "花生过敏 - 诊断与治疗 - 妙佑医疗国际",
+          "summary_chars": 1230
+        },
+        {
+          "url": "https://www.nlx.gov.cn/openness/grassroots/6605511/40282336.html",
+          "title": "【消费提示】国庆、中秋食品安全消费提示、警示_芜湖市政务公开平台",
+          "summary_chars": 1163
+        },
+        {
+          "url": "http://m.toutiao.com/group/7527499971986211363/?upstream_biz=VolcEngine",
+          "title": "餐桌上的 “隐形杀手”：警惕麦麸、花生、坚果过敏，这些救命知识要知道",
+          "summary_chars": 451
+        },
+        {
+          "url": "https://www.yxjl.org/cms/article/16636574260602960003/17691385078530010521",
+          "title": "【科普文章】宋风玲:过敏与不耐受",
+          "summary_chars": 1242
+        }
+      ]
+    }
+  ]
+}
