@@ -1,5 +1,7 @@
 # 官方 Langfuse：两个缺口的修复与真实复验
 
+最新补充：[杭州两日复杂任务](09-复杂任务展示.md)已完成真实 Desktop、模型、搜索和本地观测验收：18 次模型请求、10 次搜索、4 条 trace、46 条观测，全部闭合且无 ERROR；提供同次运行截图、两页 PDF 和原网页核对。下文早期小案例及合成测试保留各自测量边界。
+
 当前采用官方 `langfuse` 2.0.0，固定 [c2a95963…](https://github.com/NousResearch/hermes-official-plugins/tree/c2a95963c442f3f23e4bc6fe0da898e1dd1fb63d/langfuse)，SDK 4.15.2。客户端、脱敏、队列和导出仍由官方实现承担；本项目新增版本锁定的兼容补丁，不维护第二套观测系统。
 
 ## 从问题到修复

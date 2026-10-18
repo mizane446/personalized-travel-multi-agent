@@ -1,0 +1,80 @@
+{
+  "scope": "post-run read-only page retrieval; HTTP 200 alone is not factual verification",
+  "sources": [
+    {
+      "url": "https://cn.wtcf.org.cn/qqhb/cjwx/djyw/djyw/201612/21/2077131513446556000.html",
+      "status": 200,
+      "final_url": "https://cn.wtcf.org.cn/qqhb/cjwx/djyw/djyw/201612/21/2077131513446556000.html",
+      "excerpt": "&nbsp; 推荐餐馆：楼外楼 地址：杭州孤山路30号 电话：0571-87969023/87969682 龙井虾仁 口味特色：虾仁玉白，鲜嫩;芽叶碧绿，清香，色泽雅丽，滋味独特，食后清口开胃，回味无穷。 &nbsp; &n",
+      "assessment": "page fetched; excerpt manually compared, not all facts verified"
+    },
+    {
+      "url": "https://westlake.hangzhou.gov.cn/art/2025/8/13/art_1639430_59053696.html",
+      "status": 200,
+      "final_url": "https://westlake.hangzhou.gov.cn/art/2025/8/13/art_1639430_59053696.html",
+      "excerpt": "城管中心对北山街、断桥、白堤、孤山区块进行全覆盖精细化保洁，充分利用机械化洒洗设备，推行高温湿化清扫保洁，保持路面湿润，达到降温减尘的效果，提升市民游客在赏荷过程中的观感。 苏堤沿途赏荷：行至南山路，游苏堤，途经花港观鱼，最",
+      "assessment": "page fetched; excerpt manually compared, not all facts verified"
+    },
+    {
+      "url": "https://westlake.hangzhou.gov.cn/col/col1639430/art/2025/art_1bf77db2785a452cafa91b5861af91ce.html",
+      "status": 200,
+      "final_url": "https://westlake.hangzhou.gov.cn/col/col1639430/art/2025/art_1bf77db2785a452cafa91b5861af91ce.html",
+      "excerpt": "专题系列（三）｜吴胜天：西湖博物馆的建设与开放 浙江省人民政府 浙江政务服务网 官方微博 官方微信 简 | --> 繁 | English | 登录 | 无障碍阅读 进入老年模式 官方网站 简体中文 繁体中文 English",
+      "assessment": "page fetched; excerpt manually compared, not all facts verified"
+    },
+    {
+      "url": "https://wgly.hangzhou.gov.cn/art/2022/11/9/art_1229696394_58942375.html",
+      "status": 200,
+      "final_url": "https://wgly.hangzhou.gov.cn/art/2022/11/9/art_1229696394_58942375.html",
+      "excerpt": "） 地址： 杭州市上城区南山路89号 电话： 0571-87882279 ",
+      "assessment": "page fetched; excerpt manually compared, not all facts verified"
+    },
+    {
+      "url": "https://wgly.hangzhou.gov.cn/art/2024/3/6/art_1229733901_58953546.html",
+      "status": 200,
+      "final_url": "https://wgly.hangzhou.gov.cn/art/2024/3/6/art_1229733901_58953546.html",
+      "excerpt": "单上就有龙井虾仁。 西湖莼菜汤 莼菜是杭州西湖著名的特产，用莼菜制成的“西湖莼菜汤”又名“鸡火莼菜汤”，莼菜翠绿，鸡白腿红，色彩鲜艳，滑嫩清香，汤纯味美，是杭州传统名菜。 杭州西湖种植莼菜已有悠久的历史，明代《西湖游览志》就",
+      "assessment": "page fetched; excerpt manually compared, not all facts verified"
+    },
+    {
+      "url": "https://wgly.hangzhou.gov.cn/art/2024/3/8/art_1229733791_58953989.html",
+      "status": 200,
+      "final_url": "https://wgly.hangzhou.gov.cn/art/2024/3/8/art_1229733791_58953989.html",
+      "excerpt": "川、葱包烩、定胜糕…… 杭式名店：楼外楼、中国杭帮菜博物馆、知味观、福缘居、外婆家、奎元馆、菊英面店…… 美食街：武林夜市、胜利河美食街、河坊街、河东路美食街、大兜路美食街、龙翔里小吃街、南山路酒吧街…… 线路简介： 杭式美",
+      "assessment": "page fetched; excerpt manually compared, not all facts verified"
+    },
+    {
+      "url": "https://wgly.hangzhou.gov.cn/en/discoverhangzhou/thingstodo/cuisine/All/index.html",
+      "status": 200,
+      "final_url": "https://wgly.hangzhou.gov.cn/en/discoverhangzhou/thingstodo/cuisine/All/index.html",
+      "excerpt": " All ",
+      "assessment": "page fetched; excerpt manually compared, not all facts verified"
+    },
+    {
+      "url": "https://www.chinasilkmuseum.com/cs/info_164.aspx?itemid=28051",
+      "status": 200,
+      "final_url": "https://www.chinasilkmuseum.com/cs/info_164.aspx?itemid=28051",
+      "excerpt": "址：杭州市西湖区玉皇山路73-1号 开放时间：9:00—17:00（周一12:00—17:00，节假日照常） 概况 动态 活动 展览 藏品 文创 科研基地 相关机构 关于国丝 学术概况 馆务公开 机构组成 参观及预约 支持国",
+      "assessment": "page fetched; excerpt manually compared, not all facts verified"
+    },
+    {
+      "url": "https://www.ihg.com.cn/holidayinnexpress/hotels/cn/zh/hangzhou/hghwe/hoteldetail/rooms",
+      "status": 200,
+      "final_url": "https://www.ihg.com.cn/holidayinnexpress/hotels/cn/zh/hangzhou/hghwe/hoteldetail/rooms",
+      "excerpt": "Inn Express 杭州西湖东智选假日酒店 客房 Skip To main content 由于长时间无操作，您的会话将在 5 分钟内 ， 在 0 秒后 过期。 保持登录状态 You're currently viewi",
+      "assessment": "page fetched; excerpt manually compared, not all facts verified"
+    },
+    {
+      "url": "https://www.ihg.com/zh-cn/hangzhou-mainland-china/hotels-near-west-lake",
+      "error": "HTTPError",
+      "excerpt": "",
+      "assessment": "direct retrieval failed; only search evidence available"
+    },
+    {
+      "url": "https://www.zhejiangmuseum.com/cn/?ref=https%3A%2F%2Fszsyw.cn",
+      "error": "URLError",
+      "excerpt": "",
+      "assessment": "direct retrieval failed; only search evidence available"
+    }
+  ]
+}
