@@ -2,7 +2,7 @@
 
 在完整 Hermes 官方源码与原生 Desktop 上，增加直接搜索、可溯源人物偏好和有来源的旅行方案。增强源码集中在 [travel_extensions](travel_extensions/)，不另写 Agent 运行框架或桌面。
 
-> 核心迁移、受控桌面验收与一次 Sol 中转真实链路已完成；DeepSeek 官方新链路和本地 Langfuse 入库尚待验收。下表是进度唯一入口。[原版 README](https://github.com/NousResearch/hermes-agent/blob/ccc695635094d7615373db267b77f894d978b1a0/README.md) 和 [LICENSE](LICENSE) 保留上游介绍与版权。
+> 核心迁移、受控桌面验收与一次 Sol 中转真实链路已完成；本地 Langfuse 已真实入库但发现观测缺口；DeepSeek 官方新链路尚待验收。下表是进度唯一入口。[原版 README](https://github.com/NousResearch/hermes-agent/blob/ccc695635094d7615373db267b77f894d978b1a0/README.md) 和 [LICENSE](LICENSE) 保留上游介绍与版权。
 
 你可以说明目的地、饮食/住宿/景点偏好，让 Hermes 原生子 Agent 查资料，再将通过审查的候选保存成带来源的方案。冲突偏好保留证据，等待用户确认；资料不足会记录缺口。当前提供旅行资料整理，不支持预订、付款或地图路线计算。
 
@@ -42,7 +42,7 @@ pwsh.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File ./travel_extensions/st
 | 4 | [旅行质量与来源审查](docs/travel/04-旅行审查.md) | 沿用五次搜索/两轮修正，拒绝伪造来源与过期结果 | 8 项业务测试通过；12 个并发额度请求只放行 5 个；4 类协议错误被拒绝；语义效果待真实模型验证 |
 | 5 | [人物偏好 Wiki](docs/travel/05-Wiki偏好.md) | 保留原话、逐事实引用与冲突状态；部分复用 LLM Wiki 文件规范 | 7 项测试通过；4/4 合成错误写入被拒绝；不是模型幻觉率测试 |
 | 6 | [方案版本、导出与桌面全流程](docs/travel/06-方案与桌面.md) | 保存结果直接保留来源，避免模型再次改写丢失链接 | 4 项方案测试和 1 项真实父子 Agent 集成通过；隐藏 Desktop 完成 Wiki → 子任务 → 审查 → Markdown/PDF（模型与搜索模拟） |
-| 7 | [官方 Langfuse 插件](docs/travel/07-Langfuse.md) | 复用主子 Agent、工具的原生观测 | 已安装启用，官方 143 项模拟测试通过；本机 Docker 故障，真实 trace 入库待验收 |
+| 7 | [官方 Langfuse 插件](docs/travel/07-Langfuse.md) | 复用主子 Agent、工具的原生观测 | 已安装启用，官方 143 项模拟测试通过；真实入库 2 条 trace / 17 条观测；子搜索状态误报、审查调用漏记，完整观测未通过 |
 | 8 | [模型选型、复现与发布检查](docs/travel/08-模型选型与发布.md) | 复用已有 Pro/Flash 对比，单独补迁移链路验收 | 历史 20 次对比已迁入；回归 42/42；Sol 中转真实请求 64.981s、10 次模型调用、1 次搜索并成功导出；官方 12 项静态检查通过，未 push |
 
 ## 选型与决策记录
@@ -52,7 +52,7 @@ pwsh.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File ./travel_extensions/st
 | 2026-10-18 | 官方 Hermes ccc6956 + 独立插件 | 保留完整源码与基线标签；浅克隆历史未补全 |
 | 2026-10-18 | WebSearchProvider + 豆包 HTTP API | 独立搜索 API 无需 MCP 进程；分别测量接口耗时与完整回答耗时 |
 | 2026-10-18 | 原生子 Agent、Gateway、Desktop | 公开生命周期收窄到搜索工具；三方向子任务、工具白名单及完整桌面链路已受控验证 |
-| 2026-10-18 | 官方 Langfuse 2.0.0 | 固定 c2a95963c442f3f23e4bc6fe0da898e1dd1fb63d；已安装，不自写观测转发器；真实服务入库仍待验收 |
+| 2026-10-18 | 官方 Langfuse 2.0.0 | 固定 c2a95963c442f3f23e4bc6fe0da898e1dd1fb63d；已安装，不自写观测转发器；真实入库已验收，保留官方实现并公开观测缺口 |
 | 2026-10-18 | 部分复用 nashsu/llm_wiki 文件规范 | 用户确认只复用 Raw/Wiki/Schema 与必要部分，不运行第二个应用；GPLv3 代码不直接混入 MIT 源码，独立实现适配并注明来源 |
 | 2026-10-18 | 已审查候选直接保存 + SQLite + ReportLab | 沿用旧项目版本与导出思路，减少最后一次模型改写导致的来源遗漏；中文 PDF 已在 Windows 验证 |
 | 2026-10-18 | DeepSeek 官方 Pro 主规划 + Flash 子任务/审查 | 复用旧项目 20 次真实 API 选型数据；历史费用估算中位 ¥0.03451 → ¥0.02759，存在评分误判且不是新链路收益；本次不重复整套付费测试 |
@@ -76,7 +76,7 @@ pwsh.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File ./travel_extensions/st
 
 [迁移计划 v1](迁移计划-v1.md) 保留最初范围与验收条件。最新授权已扩展到全部阶段，当前状态以上表为准。
 
-最近验证：旅行模块 42 项通过，安装依赖修复后另补测相关 5 项通过；隐藏桌面受控全流程、Sol 中转真实链路、PDF 渲染和静态检查通过；官方 Langfuse 143 项模拟测试通过。Sol 实测用量 50,971 token，费用未知；[回执与实际导出](docs/travel/08-模型选型与发布.md)。下一步是补 DeepSeek 官方模型路由实测，并在 Docker 恢复后检查真实 trace 及子工具 span。尚未执行 GitHub push、新机器完整安装或全量上游回归。
+最近验证：旅行模块 42 项通过，安装依赖修复后另补测相关 5 项通过；隐藏桌面受控全流程、Sol 中转真实链路、PDF 渲染和静态检查通过；官方 Langfuse 143 项模拟测试通过。Sol 实测用量 50,971 token，费用未知；[回执与实际导出](docs/travel/08-模型选型与发布.md)。Docker 已恢复；真实 Langfuse 入库完成，但子工具状态误报和独立审查调用漏记仍是官方版本限制。完整验收还缺 DeepSeek 官方模型路由与完整观测。尚未执行 GitHub push、新机器完整安装或全量上游回归。
 
 在 PowerShell 7 中复现开发检查（`bash` 来自 Git for Windows）：
 

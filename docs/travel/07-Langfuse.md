@@ -7,7 +7,7 @@ flowchart LR
   H[Hermes 主子 Agent / 工具事件] --> D[原生 Desktop 执行展示]
   H --> P[官方 Langfuse hooks]
   P --> S[凭据过滤与有界队列]
-  S -. 当前服务不可用 .-> L[已授权的本地 Langfuse]
+  S --> L[已授权的本地 Langfuse 4.38.0]
 ```
 
 ## 已完成
@@ -18,13 +18,27 @@ flowchart LR
 
 复现：安装官方插件后，使用 `scripts/run_tests.sh <HERMES_HOME>/plugins/langfuse/tests -q -j 3`。不要修改插件源码来适应观测需求；升级时重新固定版本并跑其测试。
 
-## 当前阻塞
+## 真实服务验收：入库成功，完整观测未通过
 
-本地 Docker Engine 未运行。后台启动尝试的日志显示 `initializing Inference manager` 失败，原因是 `dockerInference` 监听文件无法访问；没有执行 Docker 重置、重装或数据清理。因此**尚未完成新版本到真实本地 Langfuse 的 trace 入库验收**，README 不标为完整完成。
+2026-10-18 已在同一次停止 Docker 后，备份并重建 `Docker/run` 和 `docker-secrets-engine` 两处 socket 目录。仅处理前者会在 Secrets Engine 再次失败；随后单独处理后者又会遇到前次启动留下的 Inference socket。两处同时处理后，`docker info` 返回 Engine 29.6.1，原有 Langfuse 七个容器恢复，健康接口返回 `OK`。未删除镜像、容器或数据卷。这是本机恢复措施，尚未确认残留文件反复出现的底层原因。
 
-服务恢复后最小验收：只发送一条合成旅行请求，核对主回合、子 Agent、web_search 和无工具审查的父子关系、用量及内容脱敏。旧项目历史 trace 不用于证明这次新插件已经上报。
+使用官方隐藏 Desktop/Gateway、真实父子 Agent 与官方观测插件发送一条合成旅行请求；模型与搜索响应固定，无新增付费模型调用。Wiki → 搜索 → 审查 → Markdown/PDF 完成，9 次模型请求中包含 2 次子 Agent 请求和 1 次审查。
 
-固定 Hermes 版本从父工具启动原生子 Agent 时，子工具的 `post_tool_call` 存在 observer suppression；旅行证据已使用公开结果转换 hook 接通，但官方 Langfuse 使用的观测 hook 是否包含这条路径的完整工具 span，仍需真实检查。143 项插件模拟测试不能证明这一点。
+通过 Langfuse v4 的 `/api/public/v2/observations` 查询本次指定 trace，得到 **2 条 trace、17 条 observation、8 条 generation**。[脱敏回执](data/langfuse-live-20261018.json)只保留名称、类型、关联、用量和状态，不导出原始对话或凭据。旧 `/api/public/traces` 在该服务 `events_only` 模式不可用，不应把旧查询失败误判为未入库。
+
+| 核对项 | 实际结果 |
+| --- | --- |
+| 主任务与原生子任务 | 主 trace 有 `Subagent: leaf` 完成记录，metadata 的子 session 可对应子 trace；不是同一条 trace 的完整树 |
+| 搜索工具 | 子 Agent 实际成功，生命周期历史为 `status=ok`；工具 span 却为 ERROR，提示回合结束前未收到结果 |
+| 模型用量 | 主任务 6 次、子任务 2 次，每次合成 usage 为 40 token；独立审查的 1 次调用没有 generation |
+| 导出 | Markdown/PDF 各 1 份，桌面仍正常完成 |
+| 脱敏 | 本次未发送真实密钥给模型；内容脱敏行为另由官方 143 项模拟测试覆盖，未把此处当作新增攻击测试 |
+
+根因依据：`agent/tool_executor.py` 对父工具设置 `model_tools.suppress_post_tool_call_hook()`，子任务继承上下文；官方插件只通过 `post_tool_call` 完成工具 span，最终在 `_end_children` 将未闭合调用标为 ERROR。旅行证据通过公开 `transform_tool_result` 正常保存，所以这是观测错误，不是搜索失败。独立辅助模型使用专门的 auxiliary hooks，而固定版本插件只注册普通 LLM hooks，因此漏记审查调用。保留官方插件与 Hermes 源码不改，**不能据此看板统计完整成本或搜索错误率**。
+
+![本次真实观测验收对应的官方桌面，模型和搜索资料为合成数据](images/desktop-travel-v3.png)
+
+复现：设置 `TRAVEL_LANGFUSE_PROFILE` 为已配置本地凭据且安装官方插件的 profile，`TRAVEL_TEST_PYTHON` 为当前 PM 应用解释器，`TRAVEL_SCREENSHOT_VERSION` 为未使用的新数字，再运行 `node --experimental-strip-types travel_extensions/verification/desktop-travel.ts`。默认不设置 profile 时不发送观测。用 [langfuse_receipt.py](../../travel_extensions/verification/langfuse_receipt.py) 的 `--env-file`、重复 `--trace-id` 与新 `--output` 路径查询指定验收记录。仅允许 loopback 服务，拒绝覆盖旧回执。
 
 其他机器复现：在旅行 profile 内执行 `python -m hermes_cli.main plugins install langfuse`，核对安装回执 `.hermes-catalog.json` 的版本；清单以后可能更新，版本不同须重测。将 `HERMES_LANGFUSE_BASE_URL` 配为自己的本地服务，公私钥仅填当前 profile 的 `.env`；`HERMES_LANGFUSE_CAPTURE=sanitized`。本项目没有为其他用户默认填写云地址或启用遥测。
 

@@ -10,6 +10,18 @@ import { resolveElectronBinary } from '../../apps/desktop/e2e/electron-binary.ts
 const root = path.resolve(import.meta.dirname, '../..');
 const outDir = path.join(root, '.hermes-runtime', `desktop-travel-${Date.now()}`);
 const profile = path.join(outDir, 'profile');
+const startedAt = new Date().toISOString();
+const traceProfile = process.env.TRAVEL_LANGFUSE_PROFILE;
+const traceEnv: Record<string, string> = {};
+if (traceProfile) {
+  for (const line of fs.readFileSync(path.join(traceProfile, '.env'), 'utf8').split(/\r?\n/)) {
+    const match = line.match(/^(HERMES_LANGFUSE_(?:PUBLIC_KEY|SECRET_KEY|BASE_URL))=(.*)$/);
+    if (match) traceEnv[match[1]] = match[2].trim().replace(/^["']|["']$/g, '');
+  }
+  const endpoint = new URL(traceEnv.HERMES_LANGFUSE_BASE_URL);
+  if (!['localhost', '127.0.0.1', '[::1]'].includes(endpoint.hostname)) throw new Error('Only local Langfuse is authorized');
+  if (!traceEnv.HERMES_LANGFUSE_PUBLIC_KEY || !traceEnv.HERMES_LANGFUSE_SECRET_KEY) throw new Error('Missing local trace credentials');
+}
 fs.mkdirSync(profile, { recursive: true });
 let modelCalls = 0;
 let childCalls = 0;
@@ -77,7 +89,8 @@ const server = http.createServer(async (req, res) => {
 });
 await new Promise<void>(resolve => server.listen(0, '127.0.0.1', resolve));
 const url = `http://127.0.0.1:${(server.address() as any).port}`;
-fs.cpSync(path.join(root, 'travel_extensions/travel'), path.join(profile, 'plugins/travel'), { recursive: true, filter: source => !source.includes('__pycache__') });
+fs.cpSync(path.join(root, 'travel_extensions/travel'), path.join(profile, 'plugins/travel-enhancements'), { recursive: true, filter: source => !source.includes('__pycache__') });
+if (traceProfile) fs.cpSync(path.join(traceProfile, 'plugins/langfuse'), path.join(profile, 'plugins/langfuse'), { recursive: true, filter: source => !source.includes('__pycache__') });
 const fixturePlugin = path.join(profile, 'plugins/fixture-web');
 fs.mkdirSync(fixturePlugin, { recursive: true });
 fs.writeFileSync(path.join(fixturePlugin, 'plugin.yaml'), 'name: fixture-web\nversion: 1.0.0\ndescription: Synthetic test evidence only\n');
@@ -99,7 +112,7 @@ model:
   base_url: ${url}/v1
   context_length: 64000
 plugins:
-  enabled: [travel-enhancements, fixture-web]
+  enabled: [travel-enhancements, fixture-web${traceProfile ? ', langfuse' : ''}]
 web:
   search_backend: fixture
 platform_toolsets:
@@ -115,6 +128,7 @@ delegation:
   inherit_mcp_toolsets: false
 `);
 writeEnvFile(profile, 'fixture-key', url);
+if (traceProfile) fs.appendFileSync(path.join(profile, '.env'), '\n' + Object.entries(traceEnv).map(([k, v]) => `${k}=${v}`).join('\n') + '\nHERMES_LANGFUSE_CAPTURE=sanitized\n');
 const env = Object.fromEntries(Object.entries(process.env).filter(([key, value]) => value && !/(_KEY|_TOKEN|_SECRET|_PASSWORD|_CREDENTIALS)$/.test(key)
   && !key.startsWith('HERMES_') && !/^(OPENAI|ANTHROPIC|CUSTOM)_/.test(key))) as Record<string, string>;
 Object.assign(env, { HERMES_HOME: profile, HERMES_RUNTIME_DIR: path.join(root, '.hermes-runtime/tools'),
@@ -143,7 +157,7 @@ try {
   const screenshot = path.join(root, `docs/travel/images/desktop-travel-v${screenshotVersion}.png`);
   if (fs.existsSync(screenshot)) throw new Error('Use a new screenshot version');
   await page.screenshot({ path: screenshot, clip: { x: 0, y: 0, width: size.width, height: size.height - 48 } });
-  const receipt = { status: 'passed', mode: 'real Desktop/Gateway; synthetic model/search', modelCalls, childCalls, reviews, exportedFormats: ['markdown', 'pdf'], hidden: !visible };
+  const receipt = { status: 'passed', mode: 'real Desktop/Gateway; synthetic model/search', startedAt, modelCalls, childCalls, reviews, exportedFormats: ['markdown', 'pdf'], hidden: !visible, localLangfuse: Boolean(traceProfile) };
   fs.writeFileSync(path.join(outDir, 'receipt.json'), JSON.stringify(receipt, null, 2));
   console.log(JSON.stringify(receipt));
 } catch (error) {
