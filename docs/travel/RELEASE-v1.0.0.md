@@ -1,8 +1,8 @@
-# Hermes Travel v1.0.0 · Windows 源码发布候选
+# Hermes Travel v1.0.0 · Windows 源码发布版
 
 最新补充：[杭州两日复杂任务](09-复杂任务展示.md)已完成真实 Desktop、模型、搜索和本地观测验收：18 次模型请求、10 次搜索、4 条 trace、46 条观测，全部闭合且无 ERROR；提供同次运行截图、两页 PDF 和原网页核对。下文早期小案例及合成测试保留各自测量边界。
 
-本地已准备供审阅，尚未向 GitHub 推送或发布 Release。用户确认后再执行发布。项目范围与最新进度以[根 README](../../README.md)为准。
+发布仓库：[mizane446/hermes-travel](https://github.com/mizane446/hermes-travel)。源码版本标签为 `travel-v1.0.0`。项目范围与最新进度以[根 README](../../README.md)为准。
 
 ## 交付内容
 
@@ -29,6 +29,6 @@ Windows 源码交付，不是已签名应用安装包；没有验证 Linux/macOS
 
 ## 发布操作
 
-确认 README 与版本内容后，选择 GitHub 仓库并推送当前增强分支；保留 `travel-upstream-baseline-20261018` 标签以便查看差异。再创建 `travel-v1.0.0` 标签与 Release，引用本说明。
+默认分支为 `main`；保留 `travel-upstream-baseline-20261018` 标签以便查看增强差异。Release 使用 `travel-v1.0.0` 标签。
 
-推荐从 Git 的已提交文件生成源码归档，不要直接压缩本地工作文件夹：`.hermes-runtime` 内含凭据、依赖、缓存和私人运行数据。上游 workflows 为官方仓库设计，推送前审阅 Actions 启用范围。本次不自动创建远程仓库、push 或发布。
+推荐从 Git 的已提交文件生成源码归档，不要直接压缩本地工作文件夹：`.hermes-runtime` 内含凭据、依赖、缓存和私人运行数据。上游 workflows 为官方仓库设计，本仓库 Actions 暂停启用；本机验证不等于 GitHub CI 通过。
