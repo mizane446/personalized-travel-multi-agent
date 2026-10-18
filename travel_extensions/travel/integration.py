@@ -54,13 +54,12 @@ def register_tools(ctx):
     from .research import Research, ResearchTools
     research = ResearchTools(ctx, lambda: Research(store()))
     ctx.register_auxiliary_task('travel_review', display_name='旅行审查',
-        description='无工具旅行资料审查；可独立选择 Flash 模型', defaults={'timeout': 45})
+        description='无工具旅行资料审查；默认使用发布配置中的 Sol 模型', defaults={'timeout': 45})
     ctx.register_hook('pre_llm_call', preference_context)
     ctx.register_hook('subagent_start', research.child_started)
     ctx.register_hook('pre_tool_call', research.guard)
-    # Public lifecycle launches inside a parent tool. In this pinned host its
-    # inherited observer-suppression scope skips child post_tool_call; the result
-    # transform still runs before delivery. Return None to preserve the result.
+    # Evidence collection stays on the public result boundary, independently of
+    # optional observability subscribers. Return None to preserve the result.
     ctx.register_hook('transform_tool_result', research.searched)
     ctx.register_tool(name='travel_plan', toolset='travel', handler=plan_tool,
         schema={'name': 'travel_plan', 'description': '从已审查任务保存新版本方案；读取历史版本；不调用模型导出 Markdown/PDF。',

@@ -1,0 +1,261 @@
+{
+  "scope": "real local Langfuse ingestion; synthetic model and search",
+  "trace_count": 2,
+  "observation_count": 18,
+  "generation_count": 9,
+  "error_observations": [],
+  "observations": [
+    {
+      "id": "36dcb826652ed728",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "LLM call 6",
+      "type": "GENERATION",
+      "startTime": "2026-10-18T05:49:06.712Z",
+      "endTime": "2026-10-18T05:49:06.734Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {
+        "input": 20,
+        "output": 20,
+        "total": 40
+      }
+    },
+    {
+      "id": "97c20462b7d03fb3",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "Tool: travel_plan",
+      "type": "TOOL",
+      "startTime": "2026-10-18T05:49:05.860Z",
+      "endTime": "2026-10-18T05:49:06.681Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {}
+    },
+    {
+      "id": "b8e515b39c6e5f7a",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "LLM call 5",
+      "type": "GENERATION",
+      "startTime": "2026-10-18T05:49:05.794Z",
+      "endTime": "2026-10-18T05:49:05.837Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {
+        "input": 20,
+        "output": 20,
+        "total": 40
+      }
+    },
+    {
+      "id": "dea33ebe290413a6",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "Tool: travel_plan",
+      "type": "TOOL",
+      "startTime": "2026-10-18T05:49:05.680Z",
+      "endTime": "2026-10-18T05:49:05.744Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {}
+    },
+    {
+      "id": "aadecfc258bbaaa6",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "LLM call 4",
+      "type": "GENERATION",
+      "startTime": "2026-10-18T05:49:05.619Z",
+      "endTime": "2026-10-18T05:49:05.659Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {
+        "input": 20,
+        "output": 20,
+        "total": 40
+      }
+    },
+    {
+      "id": "39c9a2c02a2ff605",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "LLM call aux:travel_review:aux-b3339ea028974361b592b66ab7ef83cb",
+      "type": "GENERATION",
+      "startTime": "2026-10-18T05:49:05.511Z",
+      "endTime": "2026-10-18T05:49:05.533Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {
+        "input": 20,
+        "output": 20,
+        "total": 40
+      }
+    },
+    {
+      "id": "60923397fa290d65",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "Tool: travel_research",
+      "type": "TOOL",
+      "startTime": "2026-10-18T05:49:04.937Z",
+      "endTime": "2026-10-18T05:49:05.570Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {}
+    },
+    {
+      "id": "d611d744dcbc378d",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "LLM call 3",
+      "type": "GENERATION",
+      "startTime": "2026-10-18T05:49:04.831Z",
+      "endTime": "2026-10-18T05:49:04.903Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {
+        "input": 20,
+        "output": 20,
+        "total": 40
+      }
+    },
+    {
+      "id": "629d580b56ffa307",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "Subagent: leaf",
+      "type": "SPAN",
+      "startTime": "2026-10-18T05:49:04.653Z",
+      "endTime": "2026-10-18T05:49:05.380Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {}
+    },
+    {
+      "id": "959026e37216f543",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "Tool: travel_research",
+      "type": "TOOL",
+      "startTime": "2026-10-18T05:49:04.278Z",
+      "endTime": "2026-10-18T05:49:04.748Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {}
+    },
+    {
+      "id": "531933aba8760395",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "LLM call 2",
+      "type": "GENERATION",
+      "startTime": "2026-10-18T05:49:04.220Z",
+      "endTime": "2026-10-18T05:49:04.258Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {
+        "input": 20,
+        "output": 20,
+        "total": 40
+      }
+    },
+    {
+      "id": "b2c8c6e282f5aca0",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "Tool: travel_preferences",
+      "type": "TOOL",
+      "startTime": "2026-10-18T05:49:04.007Z",
+      "endTime": "2026-10-18T05:49:04.143Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {}
+    },
+    {
+      "id": "36d1276b2ccb5d48",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "1920856232d2c1dc",
+      "name": "Hermes turn",
+      "type": "CHAIN",
+      "startTime": "2026-10-18T05:49:02.023Z",
+      "endTime": "2026-10-18T05:49:06.735Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {}
+    },
+    {
+      "id": "155bf4606ff29b9d",
+      "traceId": "b52b7dc61054be213b195d60f9bb1b20",
+      "parentObservationId": "36d1276b2ccb5d48",
+      "name": "LLM call 1",
+      "type": "GENERATION",
+      "startTime": "2026-10-18T05:49:02.023Z",
+      "endTime": "2026-10-18T05:49:03.892Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {
+        "input": 20,
+        "output": 20,
+        "total": 40
+      }
+    },
+    {
+      "id": "d4c7018b7016230c",
+      "traceId": "de59cd50ef6040a751701a211ef4ff62",
+      "parentObservationId": "880e1c523a03ee8b",
+      "name": "LLM call 2",
+      "type": "GENERATION",
+      "startTime": "2026-10-18T05:49:05.249Z",
+      "endTime": "2026-10-18T05:49:05.288Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {
+        "input": 20,
+        "output": 20,
+        "total": 40
+      }
+    },
+    {
+      "id": "72fbff50f23a4e49",
+      "traceId": "de59cd50ef6040a751701a211ef4ff62",
+      "parentObservationId": "880e1c523a03ee8b",
+      "name": "Tool: web_search",
+      "type": "TOOL",
+      "startTime": "2026-10-18T05:49:05.120Z",
+      "endTime": "2026-10-18T05:49:05.207Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {}
+    },
+    {
+      "id": "a3ada7f96158ef35",
+      "traceId": "de59cd50ef6040a751701a211ef4ff62",
+      "parentObservationId": "880e1c523a03ee8b",
+      "name": "LLM call 1",
+      "type": "GENERATION",
+      "startTime": "2026-10-18T05:49:05.007Z",
+      "endTime": "2026-10-18T05:49:05.100Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {
+        "input": 20,
+        "output": 20,
+        "total": 40
+      }
+    },
+    {
+      "id": "880e1c523a03ee8b",
+      "traceId": "de59cd50ef6040a751701a211ef4ff62",
+      "parentObservationId": "16a36ea1d5cfd701",
+      "name": "Hermes turn",
+      "type": "CHAIN",
+      "startTime": "2026-10-18T05:49:05.006Z",
+      "endTime": "2026-10-18T05:49:05.289Z",
+      "level": "DEFAULT",
+      "statusMessage": "",
+      "usageDetails": {}
+    }
+  ]
+}

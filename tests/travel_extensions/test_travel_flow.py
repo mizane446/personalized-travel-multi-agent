@@ -113,6 +113,16 @@ def test_parent_to_child_review_wiki_plan_export(tmp_path, monkeypatch):
     from hermes_cli.plugins import discover_plugins
     discover_plugins(force=True)
     from run_agent import AIAgent
+    from hermes_cli import lifecycle
+    observed_searches = []
+    invoke = lifecycle.invoke_hook
+    has_hook = lifecycle.has_hook
+    monkeypatch.setattr(lifecycle, 'has_hook', lambda name: name == 'post_tool_call' or has_hook(name))
+    def observe(name, **event):
+        if name == 'post_tool_call' and event.get('tool_name') == 'web_search':
+            observed_searches.append(event)
+        return invoke(name, **event)
+    monkeypatch.setattr(lifecycle, 'invoke_hook', observe)
     parent = AIAgent(model='fixture-model', provider='custom', base_url=base, api_key='fixture-key',
                      enabled_toolsets=['search', 'travel'], max_iterations=25,
                      quiet_mode=True, skip_memory=True, skip_context_files=True)
@@ -132,6 +142,8 @@ def test_parent_to_child_review_wiki_plan_export(tmp_path, monkeypatch):
         assert any(not r.get('tools') for r in requests), 'review must use the host LLM with no tools'
         from travel_extensions.travel.wiki import WikiStore
         assert WikiStore(tmp_path / 'travel/wiki').facts()[0]['quote'] == '喜欢散步'
+        successful_searches = [event for event in observed_searches if event.get('status') == 'ok']
+        assert len(successful_searches) == 1, observed_searches
     finally:
         parent.close()
         server.shutdown()

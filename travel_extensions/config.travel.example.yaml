@@ -1,8 +1,8 @@
 _config_version: 51
 model:
-  provider: deepseek
-  default: deepseek-v4-pro
-  base_url: https://api.deepseek.com
+  provider: custom
+  default: gpt-6-sol
+  base_url: https://ccgoai.club/v1
 agent:
   reasoning_effort: none
   max_turns: 30
@@ -16,8 +16,9 @@ tools:
 platform_toolsets:
   cli: [search, travel]
 delegation:
-  provider: deepseek
-  model: deepseek-flash
+  provider: custom
+  model: gpt-6-sol
+  base_url: https://ccgoai.club/v1
   max_concurrent_children: 3
   max_spawn_depth: 1
   inherit_mcp_toolsets: false
@@ -26,8 +27,9 @@ delegation:
   reasoning_effort: none
 auxiliary:
   travel_review:
-    provider: deepseek
-    model: deepseek-flash
+    provider: custom
+    model: gpt-6-sol
+    base_url: https://ccgoai.club/v1
     reasoning_effort: none
     timeout: 45
   title_generation:

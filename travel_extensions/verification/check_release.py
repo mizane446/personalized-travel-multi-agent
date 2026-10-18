@@ -48,8 +48,8 @@ def check():
                 errors.append('疑似凭据，仅报告文件不输出内容：' + name)
     report = {'scope': 'offline travel delta only', 'changed_files': len(changed),
               'local_links_checked': link_count, 'errors': errors,
-              'live_acceptance': {'deepseek': 'pending credentials',
-                                  'langfuse': 'ingestion verified; child tool status and review usage incomplete'}}
+              'live_acceptance': {'model': 'gpt-6-sol via relay; see measured receipt',
+                                  'langfuse': 'patched: 9/9 generations and no error observations in synthetic flow'}}
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 1 if errors else 0
 
