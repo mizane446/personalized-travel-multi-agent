@@ -8,9 +8,9 @@
 
 原生子 Agent · 直接 HTTP 搜索 · 可溯源 Wiki · 来源审查 · Markdown / PDF · Langfuse
 
-[查看效果](#看看实际效果) · [快速开始](#快速开始) · [实测数据](#数据说了什么) · [架构与改进](#复用什么改进什么) · [发布说明](docs/travel/RELEASE-v1.0.0.md)
+[查看效果](#看看实际效果) · [快速开始](#快速开始) · [实测数据](#数据说了什么) · [架构与改进](#复用什么改进什么) · [发布说明](docs/travel/RELEASE-v1.0.1.md)
 
-**Windows 源码发布版 v1.0.0** · **MIT** · **默认 gpt-6-sol**
+**Windows 源码发布版 v1.0.1** · **MIT** · **默认 gpt-6-sol**
 
 </div>
 
@@ -149,7 +149,7 @@ pwsh.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File ./trav
 
 | 改进 | 为什么加 | 新增位置与证据 |
 | --- | --- | --- |
-| 直接搜索 provider | 减少外部执行器环节，单独测量搜索耗时 | [doubao_search](travel_extensions/doubao_search/) · [18 次实测](docs/travel/02-豆包搜索.md) |
+| 直接搜索 provider | 减少外部执行器环节，单独测量搜索耗时 | [doubao_search](travel_extensions/doubao_search) · [18 次实测](docs/travel/02-豆包搜索.md) |
 | 原生研究与来源审查 | 沿用取消和调度，补旅行额度、权限、时效及来源约束 | [research.py](travel_extensions/travel/research.py) · [受限子 Agent](docs/travel/03-原生子Agent.md) · [审查测试](docs/travel/04-旅行审查.md) |
 | Wiki 事实与规则层 | 单个记忆文件不提供逐事实证据、冲突保留和写入约束 | [wiki.py](travel_extensions/travel/wiki.py) · [完整性对照](docs/travel/05-Wiki偏好.md) |
 | 审查结果直接导出 | 避免额外模型改写造成来源遗漏 | [plans.py](travel_extensions/travel/plans.py) · [中文导出验证](docs/travel/06-方案与桌面.md) |
@@ -172,7 +172,7 @@ docs/travel/             # 逐项设计理由、数据、图片和输出样例
 
 ## 项目进度与选型记录
 
-此处是当前状态唯一入口；[原迁移计划](迁移计划-v1.md)保留历史范围。
+此处是当前状态唯一入口；[原迁移计划](docs/travel/history/迁移计划-v1.md)保留历史范围。
 
 | 阶段 | 当前状态 | 实现与验证 |
 | --- | --- | --- |
@@ -183,7 +183,7 @@ docs/travel/             # 逐项设计理由、数据、图片和输出样例
 | 5. 人物偏好 Wiki | 已完成 | 原话来源、冲突确认、格式投影与软删除 |
 | 6. 方案与桌面交付 | 已完成 | 实际 Desktop/Gateway 全流程，MD/PDF 导出 |
 | 7. Langfuse 观测 | 已修复并复验 | 真实复杂案例 18/18 调用入库，子搜索正常闭合，审查计入 usage |
-| 8. 发布准备 | 本地待审阅 | Sol 配置、安装验证、展示图片、许可证、数据与检查脚本；未 push |
+| 8. 源码发布 | 已发布，v1.0.1 整理版 | 当前案例与旧版归档分离；文档导航、安装说明、验证证据与许可证齐全 |
 
 | 选择 | 理由、取舍与实现状态 |
 | --- | --- |
@@ -192,6 +192,22 @@ docs/travel/             # 逐项设计理由、数据、图片和输出样例
 | 原生生命周期 + 旅行薄适配 | 复用创建、等待、取消；自写额度、来源、人物/会话约束 |
 | LLM Wiki 文件规范部分复用 | 不另开应用；独立事实与规则层，许可边界明确 |
 | 官方 Langfuse 2.0.0 + 版本锁定补丁 | 真实验收发现两项缺口后最小修复；沿用客户端和脱敏，非另建上报系统 |
+
+## 文件导航
+
+完整保留 Hermes 官方源码目录，旅行增强集中在以下位置。根目录的 `agent/`、`apps/`、`gateway/`、`pm/` 等属于官方运行框架，不是重复文件。
+
+| 位置 | 内容 |
+| --- | --- |
+| [文档导航](docs/travel/README.md) | 按使用、实现、证据与历史查阅 |
+| [travel_extensions/](travel_extensions/) | 旅行增强、配置模板、安装与验证脚本 |
+| [tests/travel_extensions/](tests/travel_extensions/) | 增强功能回归测试 |
+| [docs/travel/examples/](docs/travel/examples/) | 当前真实案例的 Markdown / PDF；旧案例放 `旧版/` |
+| [docs/travel/images/](docs/travel/images/) | 展示图片；被替换的截图放 `旧版/` |
+| [docs/travel/data/](docs/travel/data/) | 脱敏实测数据，具体口径见文档导航 |
+| [docs/travel/history/](docs/travel/history/) | 历史迁移计划，不代表当前状态 |
+
+`.hermes-runtime/` 是本机运行目录，被 Git 忽略，不包含在源码发布中。
 
 ## 验证与维护
 
