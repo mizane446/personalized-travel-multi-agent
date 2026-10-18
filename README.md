@@ -43,7 +43,7 @@ pwsh.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File ./travel_extensions/st
 | 5 | [人物偏好 Wiki](docs/travel/05-Wiki偏好.md) | 保留原话、逐事实引用与冲突状态；部分复用 LLM Wiki 文件规范 | 7 项测试通过；4/4 合成错误写入被拒绝；不是模型幻觉率测试 |
 | 6 | [方案版本、导出与桌面全流程](docs/travel/06-方案与桌面.md) | 保存结果直接保留来源，避免模型再次改写丢失链接 | 4 项方案测试和 1 项真实父子 Agent 集成通过；隐藏 Desktop 完成 Wiki → 子任务 → 审查 → Markdown/PDF（模型与搜索模拟） |
 | 7 | [官方 Langfuse 插件](docs/travel/07-Langfuse.md) | 复用主子 Agent、工具的原生观测 | 已安装启用，官方 143 项模拟测试通过；真实入库 2 条 trace / 17 条观测；子搜索状态误报、审查调用漏记，完整观测未通过 |
-| 8 | [模型选型、复现与发布检查](docs/travel/08-模型选型与发布.md) | 复用已有 Pro/Flash 对比，单独补迁移链路验收 | 历史 20 次对比已迁入；回归 42/42；Sol 中转真实请求 64.981s、10 次模型调用、1 次搜索并成功导出；官方 12 项静态检查通过，未 push |
+| 8 | [模型选型、复现与发布检查](docs/travel/08-模型选型与发布.md) | 复用已有 Pro/Flash 对比，单独补迁移链路验收 | 历史 20 次对比已迁入；回归 42/42；Sol 中转真实请求 64.981s、10 次模型调用、1 次搜索并成功导出；干净克隆安装及 42/42 回归通过；官方 12 项静态检查通过，未 push |
 
 ## 选型与决策记录
 
@@ -76,7 +76,7 @@ pwsh.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File ./travel_extensions/st
 
 [迁移计划 v1](迁移计划-v1.md) 保留最初范围与验收条件。最新授权已扩展到全部阶段，当前状态以上表为准。
 
-最近验证：旅行模块 42 项通过，安装依赖修复后另补测相关 5 项通过；隐藏桌面受控全流程、Sol 中转真实链路、PDF 渲染和静态检查通过；官方 Langfuse 143 项模拟测试通过。Sol 实测用量 50,971 token，费用未知；[回执与实际导出](docs/travel/08-模型选型与发布.md)。Docker 已恢复；真实 Langfuse 入库完成，但子工具状态误报和独立审查调用漏记仍是官方版本限制。完整验收还缺 DeepSeek 官方模型路由与完整观测。尚未执行 GitHub push、新机器完整安装或全量上游回归。
+最近验证：旅行模块 42 项通过，安装依赖修复后另补测相关 5 项通过；隐藏桌面受控全流程、Sol 中转真实链路、PDF 渲染和静态检查通过；官方 Langfuse 143 项模拟测试通过。Sol 实测用量 50,971 token，费用未知；[回执与实际导出](docs/travel/08-模型选型与发布.md)。Docker 已恢复；真实 Langfuse 入库完成，但子工具状态误报和独立审查调用漏记仍是官方版本限制。完整验收还缺 DeepSeek 官方模型路由与完整观测。已完成同机干净克隆、独立运行目录安装和 42/42 回归，以及中文 PDF 内容检查；尚未执行 GitHub push、新机器安装或全量上游回归。
 
 在 PowerShell 7 中复现开发检查（`bash` 来自 Git for Windows）：
 

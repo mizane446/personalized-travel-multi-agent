@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-18",
+  "source_commit": "a523da5591d51730d61414a8ea560171d5c37ae7",
+  "scope": "Fresh local clone, separate runtime and profile on the same Windows host; no copied credentials or previous profile",
+  "setup_command": "pwsh.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File travel_extensions/setup.ps1",
+  "setup_exit_code": 0,
+  "plugin_doctor": {"status": "passed", "tools": 3, "hooks": 4},
+  "reportlab_version": "4.5.1",
+  "tests": {"files": 9, "passed": 42, "failed": 0, "seconds": 65.3, "workers": 3},
+  "export": {"markdown": 1, "pdf": 1, "pages": 1, "page_size": "A4", "chinese_text": true, "source_url_preserved": true, "uncertainty_preserved": true},
+  "limitations": ["Same host, system tools/fonts and user dependency caches may be reused", "Not a new machine or cross-platform test", "No paid model or search requests", "Does not resolve the official Langfuse observation gaps or missing DeepSeek credentials"]
+}
