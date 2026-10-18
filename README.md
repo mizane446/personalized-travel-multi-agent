@@ -92,6 +92,8 @@
 已验证：**Windows + PowerShell 7 + Git + Node.js 24**。Python 与后端依赖由 Hermes 官方 PM 管理；中文 PDF 使用系统微软雅黑。先克隆本仓库，进入仓库根目录，再执行：
 
 ```powershell
+git clone https://github.com/mizane446/hermes-travel.git
+cd hermes-travel
 $env:UV_INDEX_URL = 'https://pypi.org/simple'
 pwsh.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File ./travel_extensions/setup.ps1
 ```
