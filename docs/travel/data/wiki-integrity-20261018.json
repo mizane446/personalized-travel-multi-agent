@@ -1,0 +1,27 @@
+{
+  "method": "synthetic write-validation challenge, no LLM",
+  "cases": [
+    {
+      "case": "missing_source",
+      "plain_file_rejected": false,
+      "wiki_rejected": true
+    },
+    {
+      "case": "invented_quote",
+      "plain_file_rejected": false,
+      "wiki_rejected": true
+    },
+    {
+      "case": "unknown_key",
+      "plain_file_rejected": false,
+      "wiki_rejected": true
+    },
+    {
+      "case": "changed_raw",
+      "plain_file_rejected": false,
+      "wiki_rejected": true
+    }
+  ],
+  "conflicting_facts_retained": 2,
+  "limitation": "Does not measure semantic correctness, model hallucinations or upstream Hermes memory quality."
+}

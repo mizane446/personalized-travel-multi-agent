@@ -1,0 +1,8 @@
+name: travel-enhancements
+version: 1.0.0
+description: Evidence-bound preferences, native travel research and versioned plans.
+author: zachary.zou
+provides_tools:
+  - travel_preferences
+provides_hooks:
+  - pre_llm_call
