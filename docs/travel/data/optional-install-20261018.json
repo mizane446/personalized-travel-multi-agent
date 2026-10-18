@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-18",
+  "scope": "same-machine isolated existing clean baseline checkout, updated setup/config/observer modules; not a fresh-machine test",
+  "command": "travel_extensions/setup.ps1 -SkipBootstrap -WithLangfuse",
+  "exit_code": 0,
+  "official_plugin_ref": "c2a95963c442f3f23e4bc6fe0da898e1dd1fb63d",
+  "source_hash_checked": true,
+  "manifest_hash_checked": true,
+  "patch_matches_expected": true,
+  "auxiliary_hooks_declared": true,
+  "default_model": "gpt-6-sol",
+  "credential_values_present": false,
+  "reportlab": "4.5.1",
+  "travel_doctor": {
+    "tools": 3,
+    "hooks": 4,
+    "passed": true
+  }
+}
