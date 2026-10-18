@@ -241,3 +241,21 @@ for activation, daily use, dependency changes, and leaving the environment.
 MIT — see [LICENSE](LICENSE).
 
 Built by [Nous Research](https://nousresearch.com).
+
+## 旅行增强：迁移进度与选型记录
+
+本节记录此二次开发分支；上文为 Hermes 官方介绍。[迁移计划 v1](迁移计划-v1.md) 列出范围、复用依据和各阶段验收条件。
+
+| 项目 | 当前状态 | 下一步 |
+| --- | --- | --- |
+| 官方基线 | 已独立浅克隆，源码完整；基线 ccc695635094d7615373db267b77f894d978b1a0 | 隔离运行环境验收 |
+| 官方 Desktop | 已确认桌面与共享前端源码存在，未安装或构建 | 验证原版启动、展示与取消 |
+| 旅行功能 | 尚未迁移 | 豆包 provider → 原生子 Agent → 审查/Wiki/方案 → 桌面/观测 |
+
+| 日期 | 选择 | 理由与取舍 | 实现及验证 |
+| --- | --- | --- | --- |
+| 2026-10-18 | 官方完整源码 + 独立增强模块；保留原生桌面 | 原版与增强可追溯；新版接口须重新验收，不照搬旧适配 | 已核查来源、commit、干净初始状态和桌面入口；仅增加计划文档 |
+| 2026-10-18 | 优先原生委派、WebSearchProvider、MemoryProvider 和桌面插件接口 | 复用调度/展示，只补旅行业务与豆包适配；具体接口须运行验证 | 已核查仓内文档，尚未接入；不迁移 Claude Code/高德业务依赖 |
+| 2026-10-18 | 通过官方插件清单评估 Langfuse 2.0.0 | 新版已独立为 hermes-official-plugins/langfuse，避免重复上报实现 | 清单固定 sha c2a95963c442f3f23e4bc6fe0da898e1dd1fb63d；未安装、未发送数据 |
+
+本轮验证为 Git 与文件/文档检查；未运行应用、模型、桌面或迁移测试。速度提升尚未测量。
