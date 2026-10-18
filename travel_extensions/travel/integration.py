@@ -15,6 +15,8 @@ def preference_context(session_id=None, turn_id=None, user_message=None, parent_
         return None
     wiki = store()
     source = wiki.record(session_id, turn_id or identifier(user_message), user_message)
+    from .research import Research
+    Research(wiki).begin(session_id, source)
     command = re.fullmatch(r'/(确认偏好|忘记偏好)\s+([a-f0-9]{24})', user_message.strip())
     if command:
         if command[1] == '确认偏好':
@@ -47,7 +49,19 @@ def preference_tool(args, session_id=None, **kwargs):
 
 
 def register_tools(ctx):
+    from .research import Research, ResearchTools
+    research = ResearchTools(ctx, lambda: Research(store()))
     ctx.register_hook('pre_llm_call', preference_context)
+    ctx.register_hook('subagent_start', research.child_started)
+    ctx.register_hook('pre_tool_call', research.guard)
+    ctx.register_hook('post_tool_call', research.searched)
+    ctx.register_tool(name='travel_research', toolset='travel', handler=research.tool,
+        schema={'name': 'travel_research', 'description': '启动/查询/取消原生旅行检索子 Agent。先澄清目的地和需求。每方向五次搜索、最多两轮修正。必须 poll 取得审查结果才可使用。',
+                'parameters': {'type': 'object', 'properties': {
+                    'action': {'type': 'string', 'enum': ['start', 'poll', 'cancel']},
+                    'direction': {'type': 'string', 'enum': ['food', 'hotel', 'attraction']},
+                    'destination': {'type': 'string'}, 'requirements': {'type': 'string'},
+                    'job_id': {'type': 'string'}}, 'required': ['action']}})
     ctx.register_tool(name='travel_preferences', toolset='travel', handler=preference_tool,
         schema={'name': 'travel_preferences', 'description': '读取当前人物偏好，或用当前会话用户原话提交偏好。不能由模型确认冲突。',
                 'parameters': {'type': 'object', 'properties': {

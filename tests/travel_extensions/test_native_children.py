@@ -9,9 +9,11 @@ import shutil
 import threading
 
 import httpx
+import pytest
 
 
-def test_three_native_children_only_search_and_return_sources(tmp_path, monkeypatch):
+@pytest.mark.parametrize('public_lifecycle', [False, True])
+def test_three_native_children_only_search_and_return_sources(tmp_path, monkeypatch, public_lifecycle):
     requests = []
 
     class Handler(BaseHTTPRequestHandler):
@@ -73,16 +75,29 @@ def test_three_native_children_only_search_and_return_sources(tmp_path, monkeypa
     discover_plugins(force=True)
     from run_agent import AIAgent
     from tools.delegate_tool import delegate_task
+    from tools.registry import registry
+    registry.register(name='private_write', toolset='private_test',
+                      schema={'name': 'private_write', 'description': 'Parent-only fixture write',
+                              'parameters': {'type': 'object', 'properties': {}}}, handler=lambda args: '{}')
     parent = AIAgent(model='fixture-model', provider='custom',
                      base_url=f'http://127.0.0.1:{server.server_port}/v1', api_key='fixture-key',
-                     enabled_toolsets=['search', 'delegation'], max_iterations=4,
+                     enabled_toolsets=['search', 'delegation'] + (['private_test'] if public_lifecycle else []), max_iterations=4,
                      quiet_mode=True, skip_memory=True, skip_context_files=True)
     try:
-        result = json.loads(delegate_task(tasks=[{'goal': f'Search {role}'} for role in ('food', 'hotel', 'attraction')],
-                                          max_iterations=3, parent_agent=parent))
-        assert len(result['results']) == 3, result
-        assert all(r['status'] == 'completed' and 'https://example.org/evidence' in r['summary']
-                   for r in result['results']), result
+        if public_lifecycle:
+            from agent.subagent_lifecycle import SubagentLifecycleService, SubagentLaunchRequest
+            service = SubagentLifecycleService(lambda: parent)
+            handles = [service.launch(SubagentLaunchRequest(goal=f'Search {role}', allowed_toolsets=('search',)))
+                       for role in ('food', 'hotel', 'attraction')]
+            for handle in handles:
+                assert service.wait(handle, timeout_seconds=60).completed
+                assert 'https://example.org/evidence' in service.result(handle).summary
+        else:
+            result = json.loads(delegate_task(tasks=[{'goal': f'Search {role}'} for role in ('food', 'hotel', 'attraction')],
+                                              max_iterations=3, parent_agent=parent))
+            assert len(result['results']) == 3, result
+            assert all(r['status'] == 'completed' and 'https://example.org/evidence' in r['summary']
+                       for r in result['results']), result
         assert len(requests) == 6
         for request in requests:
             assert {t['function']['name'] for t in request.get('tools', [])} == {'web_search'}
