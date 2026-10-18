@@ -1,0 +1,37 @@
+{
+  "provider": "deepseek",
+  "currency": "CNY",
+  "unit": "per_million_tokens",
+  "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+  "fetched_at": "2026-10-09T13:46:14.912690+00:00",
+  "models": {
+    "deepseek-v4-pro": {
+      "documented_version": "DeepSeek-V4-Pro-0813",
+      "off_peak": {
+        "input": 4.5,
+        "cache_read": 0.15,
+        "output": 13.5
+      },
+      "peak": {
+        "input": 9.0,
+        "cache_read": 0.3,
+        "output": 27.0
+      }
+    },
+    "deepseek-flash": {
+      "documented_version": "DeepSeek-V4.1-Flash",
+      "off_peak": {
+        "input": 1,
+        "cache_read": 0.02,
+        "output": 4
+      },
+      "peak": {
+        "input": 2,
+        "cache_read": 0.04,
+        "output": 8
+      }
+    }
+  },
+  "peak_hours": "北京时间周一至周五（不含中国法定节假日）09:00-12:00、14:00-18:00",
+  "source_sha256": "f133e9729889067e922579c9e1ddcebb91153fe44f655a77155df6e60cd745c4"
+}

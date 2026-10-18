@@ -1,0 +1,198 @@
+{
+  "mode": "real ccgoai relay and real Doubao; synthetic user request",
+  "model": "gpt-6-sol",
+  "seconds": 64.981,
+  "model_requests": 10,
+  "request_limit": 12,
+  "output_tokens_per_request_limit": 1600,
+  "calls": [
+    {
+      "request": 1,
+      "tools": [
+        "travel_plan",
+        "travel_preferences",
+        "travel_research",
+        "web_search"
+      ],
+      "output_token_limit": 1600,
+      "status": 200,
+      "seconds": 5.102,
+      "usage": {
+        "prompt_tokens": 3618,
+        "completion_tokens": 52,
+        "total_tokens": 3670
+      }
+    },
+    {
+      "request": 2,
+      "tools": [
+        "travel_plan",
+        "travel_preferences",
+        "travel_research",
+        "web_search"
+      ],
+      "output_token_limit": 1600,
+      "status": 200,
+      "seconds": 5.473,
+      "usage": {
+        "prompt_tokens": 3774,
+        "completion_tokens": 64,
+        "total_tokens": 3838,
+        "prompt_tokens_details": {
+          "cached_tokens": 3456
+        }
+      }
+    },
+    {
+      "request": 3,
+      "tools": [
+        "travel_plan",
+        "travel_preferences",
+        "travel_research",
+        "web_search"
+      ],
+      "output_token_limit": 1600,
+      "status": 200,
+      "seconds": 3.723,
+      "usage": {
+        "prompt_tokens": 3906,
+        "completion_tokens": 36,
+        "total_tokens": 3942,
+        "prompt_tokens_details": {
+          "cached_tokens": 3584
+        }
+      }
+    },
+    {
+      "request": 4,
+      "tools": [
+        "web_search"
+      ],
+      "output_token_limit": 1600,
+      "status": 200,
+      "seconds": 6.209,
+      "usage": {
+        "prompt_tokens": 5700,
+        "completion_tokens": 37,
+        "total_tokens": 5737
+      }
+    },
+    {
+      "request": 5,
+      "tools": [
+        "web_search"
+      ],
+      "output_token_limit": 1600,
+      "status": 200,
+      "seconds": 6.884,
+      "usage": {
+        "prompt_tokens": 10209,
+        "completion_tokens": 156,
+        "total_tokens": 10365,
+        "prompt_tokens_details": {
+          "cached_tokens": 5504
+        }
+      }
+    },
+    {
+      "request": 6,
+      "tools": [],
+      "output_token_limit": 1600,
+      "status": 200,
+      "seconds": 5.277,
+      "usage": {
+        "prompt_tokens": 5191,
+        "completion_tokens": 155,
+        "total_tokens": 5346
+      }
+    },
+    {
+      "request": 7,
+      "tools": [
+        "travel_plan",
+        "travel_preferences",
+        "travel_research",
+        "web_search"
+      ],
+      "output_token_limit": 1600,
+      "status": 200,
+      "seconds": 3.339,
+      "usage": {
+        "prompt_tokens": 4154,
+        "completion_tokens": 48,
+        "total_tokens": 4202
+      }
+    },
+    {
+      "request": 8,
+      "tools": [
+        "travel_plan",
+        "travel_preferences",
+        "travel_research",
+        "web_search"
+      ],
+      "output_token_limit": 1600,
+      "status": 200,
+      "seconds": 3.23,
+      "usage": {
+        "prompt_tokens": 4233,
+        "completion_tokens": 22,
+        "total_tokens": 4255,
+        "prompt_tokens_details": {
+          "cached_tokens": 3968
+        }
+      }
+    },
+    {
+      "request": 9,
+      "tools": [
+        "travel_plan",
+        "travel_preferences",
+        "travel_research",
+        "web_search"
+      ],
+      "output_token_limit": 1600,
+      "status": 200,
+      "seconds": 7.317,
+      "usage": {
+        "prompt_tokens": 4563,
+        "completion_tokens": 26,
+        "total_tokens": 4589,
+        "prompt_tokens_details": {
+          "cached_tokens": 4096
+        }
+      }
+    },
+    {
+      "request": 10,
+      "tools": [
+        "travel_plan",
+        "travel_preferences",
+        "travel_research",
+        "web_search"
+      ],
+      "output_token_limit": 1600,
+      "status": 200,
+      "seconds": 8.485,
+      "usage": {
+        "prompt_tokens": 4740,
+        "completion_tokens": 287,
+        "total_tokens": 5027,
+        "prompt_tokens_details": {
+          "cached_tokens": 4480
+        }
+      }
+    }
+  ],
+  "search_calls": 1,
+  "search_http_requests": 1,
+  "evidence_urls": 5,
+  "preference_count": 1,
+  "exported_formats": [
+    "md",
+    "pdf"
+  ],
+  "exception_type": null,
+  "cost": "unknown; token usage is not a bill",
+  "passed": true
+}

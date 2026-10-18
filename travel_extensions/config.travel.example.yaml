@@ -1,0 +1,34 @@
+_config_version: 51
+model:
+  provider: deepseek
+  default: deepseek-v4-pro
+  base_url: https://api.deepseek.com
+agent:
+  reasoning_effort: none
+  max_turns: 30
+plugins:
+  enabled: [web-doubao, travel-enhancements]
+web:
+  search_backend: doubao
+tools:
+  tool_search:
+    enabled: "off"
+platform_toolsets:
+  cli: [search, travel]
+delegation:
+  provider: deepseek
+  model: deepseek-flash
+  max_concurrent_children: 3
+  max_spawn_depth: 1
+  inherit_mcp_toolsets: false
+  oneshot_max_children: 3
+  child_timeout_seconds: 120
+  reasoning_effort: none
+auxiliary:
+  travel_review:
+    provider: deepseek
+    model: deepseek-flash
+    reasoning_effort: none
+    timeout: 45
+  title_generation:
+    enabled: false

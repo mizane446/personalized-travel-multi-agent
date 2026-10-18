@@ -163,7 +163,7 @@ class ResearchTools:
             return json.dumps(self.poll(state, job), ensure_ascii=False)
         except (ValueError, TypeError, KeyError) as exc:
             return json.dumps({'error': str(exc)}, ensure_ascii=False)
-        except Exception:
+        except Exception:  # health: allow BLE001 -- Plugin boundary returns a safe error; provider exceptions can contain credentials.
             return json.dumps({'error': '宿主调用失败；检查本地模型配置与插件日志，不自动重试'})
 
     def start(self, state, session, args):
@@ -212,7 +212,7 @@ class ResearchTools:
                         input=[PluginLlmTextInput(text=json.dumps(payload, ensure_ascii=False))],
                         json_mode=True, max_tokens=1600, timeout=45, purpose='travel-review', task='travel_review')
                     answer = validate_review(reviewed.parsed, sources)
-                except Exception:
+                except Exception:  # health: allow BLE001 -- Reject failed reviews without echoing provider credentials or private payloads.
                     answer = {'accepted': [], 'complete': False, 'feedback': '审查调用或来源校验失败；未交付未经验证内容'}
         # Recheck after the model call: a new user turn can arrive while reviewing.
         if state.get(job['session'], job['id'])['cancelled']:

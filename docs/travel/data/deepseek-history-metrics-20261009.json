@@ -1,0 +1,461 @@
+{
+  "conditions": {
+    "all_main": {
+      "trials": 10,
+      "passed": 8,
+      "intent_handling_passed": 9,
+      "errors": 0,
+      "checks": {
+        "routing_exact": {
+          "passed": 9,
+          "assessed": 10
+        },
+        "constraints_ok": {
+          "passed": 10,
+          "assessed": 10
+        },
+        "coverage": {
+          "passed": 8,
+          "assessed": 8
+        },
+        "no_forbidden_candidate": {
+          "passed": 9,
+          "assessed": 10
+        },
+        "no_daily_itinerary": {
+          "passed": 10,
+          "assessed": 10
+        },
+        "citations": {
+          "passed": 8,
+          "assessed": 8
+        },
+        "plan_saved": {
+          "passed": 8,
+          "assessed": 8
+        },
+        "clarified": {
+          "passed": 1,
+          "assessed": 2
+        }
+      },
+      "constraint_items": 33,
+      "constraint_items_passed": 33,
+      "all_latency": {
+        "n": 10,
+        "median": 31.86700000000019,
+        "p95": 60.82800000000134
+      },
+      "passed_latency": {
+        "n": 8,
+        "median": 31.86700000000019,
+        "p95": 60.82800000000134
+      },
+      "recommendation_latency": {
+        "n": 7,
+        "median": 32.125,
+        "p95": 60.82800000000134
+      },
+      "clarification_latency": {
+        "n": 1,
+        "median": 13.203000000001339,
+        "p95": 13.203000000001339
+      },
+      "first_candidate_latency": {
+        "n": 7,
+        "median": 29.67199999999866,
+        "p95": 43.38999999999942
+      },
+      "lifecycle_latency": {
+        "n": 10,
+        "median": 33.49200000000019,
+        "p95": 62.17099999999846
+      },
+      "role_request_latency": {
+        "main": {
+          "n": 45,
+          "median": 3.839139699935913,
+          "p95": 8.058704853057861
+        },
+        "search": {
+          "n": 24,
+          "median": 2.4070000000010623,
+          "p95": 5.217999999997119
+        },
+        "review": {
+          "n": 12,
+          "median": 2.7190000000000003,
+          "p95": 6.64
+        },
+        "memory": {
+          "n": 10,
+          "median": 1.3275000000000001,
+          "p95": 2.672
+        }
+      },
+      "usage_by_role": {
+        "main": {
+          "calls": 45,
+          "usage_reports": 45,
+          "prompt_tokens": 150706,
+          "completion_tokens": 10888,
+          "cache_read_tokens": 137472,
+          "cache_write_tokens": 0
+        },
+        "search": {
+          "calls": 24,
+          "usage_reports": 24,
+          "prompt_tokens": 7440,
+          "completion_tokens": 2240,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "review": {
+          "calls": 12,
+          "usage_reports": 12,
+          "prompt_tokens": 14717,
+          "completion_tokens": 2157,
+          "cache_read_tokens": 4224,
+          "cache_write_tokens": 0
+        },
+        "memory": {
+          "calls": 10,
+          "usage_reports": 10,
+          "prompt_tokens": 6350,
+          "completion_tokens": 164,
+          "cache_read_tokens": 3456,
+          "cache_write_tokens": 0
+        }
+      },
+      "search_calls": 12,
+      "tasks": 12,
+      "failures": [
+        {
+          "case_id": "P07",
+          "repeat": 0,
+          "error": null,
+          "checks": [
+            "routing_exact",
+            "no_unrequested_direction",
+            "clarified",
+            "passed"
+          ]
+        },
+        {
+          "case_id": "P06",
+          "repeat": 0,
+          "error": null,
+          "checks": [
+            "no_forbidden_candidate",
+            "passed"
+          ]
+        }
+      ],
+      "actual_billed_cost": null
+    },
+    "layered": {
+      "trials": 10,
+      "passed": 6,
+      "intent_handling_passed": 9,
+      "errors": 0,
+      "checks": {
+        "routing_exact": {
+          "passed": 9,
+          "assessed": 10
+        },
+        "constraints_ok": {
+          "passed": 10,
+          "assessed": 10
+        },
+        "coverage": {
+          "passed": 8,
+          "assessed": 8
+        },
+        "no_forbidden_candidate": {
+          "passed": 8,
+          "assessed": 10
+        },
+        "no_daily_itinerary": {
+          "passed": 10,
+          "assessed": 10
+        },
+        "citations": {
+          "passed": 7,
+          "assessed": 8
+        },
+        "plan_saved": {
+          "passed": 8,
+          "assessed": 8
+        },
+        "clarified": {
+          "passed": 1,
+          "assessed": 2
+        }
+      },
+      "constraint_items": 33,
+      "constraint_items_passed": 33,
+      "all_latency": {
+        "n": 10,
+        "median": 28.28149999999914,
+        "p95": 34.34400000000096
+      },
+      "passed_latency": {
+        "n": 6,
+        "median": 28.42149999999856,
+        "p95": 34.34400000000096
+      },
+      "recommendation_latency": {
+        "n": 5,
+        "median": 28.764999999999418,
+        "p95": 34.34400000000096
+      },
+      "clarification_latency": {
+        "n": 1,
+        "median": 18.25,
+        "p95": 18.25
+      },
+      "first_candidate_latency": {
+        "n": 5,
+        "median": 25.843000000000757,
+        "p95": 30.98400000000038
+      },
+      "lifecycle_latency": {
+        "n": 10,
+        "median": 29.43000000000029,
+        "p95": 35.28100000000268
+      },
+      "role_request_latency": {
+        "main": {
+          "n": 46,
+          "median": 3.529049038887024,
+          "p95": 6.872304201126099
+        },
+        "search": {
+          "n": 24,
+          "median": 1.3515000000006694,
+          "p95": 1.9369999999980791
+        },
+        "review": {
+          "n": 12,
+          "median": 1.7185000000000001,
+          "p95": 2.375
+        },
+        "memory": {
+          "n": 10,
+          "median": 0.9299999999999999,
+          "p95": 1.516
+        }
+      },
+      "usage_by_role": {
+        "main": {
+          "calls": 46,
+          "usage_reports": 46,
+          "prompt_tokens": 154788,
+          "completion_tokens": 10966,
+          "cache_read_tokens": 135808,
+          "cache_write_tokens": 0
+        },
+        "search": {
+          "calls": 24,
+          "usage_reports": 24,
+          "prompt_tokens": 7416,
+          "completion_tokens": 3821,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "review": {
+          "calls": 12,
+          "usage_reports": 12,
+          "prompt_tokens": 16410,
+          "completion_tokens": 2722,
+          "cache_read_tokens": 3072,
+          "cache_write_tokens": 0
+        },
+        "memory": {
+          "calls": 10,
+          "usage_reports": 10,
+          "prompt_tokens": 6353,
+          "completion_tokens": 294,
+          "cache_read_tokens": 2560,
+          "cache_write_tokens": 0
+        }
+      },
+      "search_calls": 12,
+      "tasks": 12,
+      "failures": [
+        {
+          "case_id": "P09",
+          "repeat": 0,
+          "error": null,
+          "checks": [
+            "citations",
+            "passed"
+          ]
+        },
+        {
+          "case_id": "P10",
+          "repeat": 0,
+          "error": null,
+          "checks": [
+            "no_forbidden_candidate",
+            "passed"
+          ]
+        },
+        {
+          "case_id": "P07",
+          "repeat": 0,
+          "error": null,
+          "checks": [
+            "routing_exact",
+            "no_unrequested_direction",
+            "clarified",
+            "passed"
+          ]
+        },
+        {
+          "case_id": "P02",
+          "repeat": 0,
+          "error": null,
+          "checks": [
+            "no_forbidden_candidate",
+            "passed"
+          ]
+        }
+      ],
+      "actual_billed_cost": null
+    }
+  },
+  "paired_successes": [
+    {
+      "case_id": "P01",
+      "repeat": 0,
+      "all_main_seconds": 34.51499999999942,
+      "layered_seconds": 28.764999999999418,
+      "difference_seconds": -5.75
+    },
+    {
+      "case_id": "P05",
+      "repeat": 0,
+      "all_main_seconds": 34.375,
+      "layered_seconds": 34.34400000000096,
+      "difference_seconds": -0.030999999999039574
+    },
+    {
+      "case_id": "P03",
+      "repeat": 0,
+      "all_main_seconds": 29.454000000001543,
+      "layered_seconds": 25.29699999999866,
+      "difference_seconds": -4.157000000002881
+    },
+    {
+      "case_id": "P08",
+      "repeat": 0,
+      "all_main_seconds": 13.203000000001339,
+      "layered_seconds": 18.25,
+      "difference_seconds": 5.046999999998661
+    },
+    {
+      "case_id": "P04",
+      "repeat": 0,
+      "all_main_seconds": 60.82800000000134,
+      "layered_seconds": 33.15599999999904,
+      "difference_seconds": -27.6720000000023
+    }
+  ],
+  "paired_difference": {
+    "n": 5,
+    "median": -4.157000000002881,
+    "p95": 5.046999999998661
+  },
+  "billing": {
+    "conditions": {},
+    "jointly_successful_pairs": 0,
+    "paired_all_main_usd": 0,
+    "paired_layered_usd": 0,
+    "paired_reduction_fraction": null
+  },
+  "price_estimates": [
+    {
+      "period": "off_peak",
+      "conditions": {
+        "all_main": {
+          "n": 10,
+          "median": 0.03451215,
+          "p95": 0.0687156
+        },
+        "layered": {
+          "n": 10,
+          "median": 0.027589990000000002,
+          "p95": 0.05802358
+        }
+      },
+      "recommendation_pairs": [
+        {
+          "case_id": "P01",
+          "repeat": 0,
+          "all_main_cny": 0.040614,
+          "layered_cny": 0.027808839999999998
+        },
+        {
+          "case_id": "P05",
+          "repeat": 0,
+          "all_main_cny": 0.0687156,
+          "layered_cny": 0.05802358
+        },
+        {
+          "case_id": "P03",
+          "repeat": 0,
+          "all_main_cny": 0.0314145,
+          "layered_cny": 0.025763839999999993
+        },
+        {
+          "case_id": "P04",
+          "repeat": 0,
+          "all_main_cny": 0.0660936,
+          "layered_cny": 0.04205236
+        }
+      ]
+    },
+    {
+      "period": "peak",
+      "conditions": {
+        "all_main": {
+          "n": 10,
+          "median": 0.0690243,
+          "p95": 0.1374312
+        },
+        "layered": {
+          "n": 10,
+          "median": 0.055179980000000003,
+          "p95": 0.11604716
+        }
+      },
+      "recommendation_pairs": [
+        {
+          "case_id": "P01",
+          "repeat": 0,
+          "all_main_cny": 0.081228,
+          "layered_cny": 0.055617679999999996
+        },
+        {
+          "case_id": "P05",
+          "repeat": 0,
+          "all_main_cny": 0.1374312,
+          "layered_cny": 0.11604716
+        },
+        {
+          "case_id": "P03",
+          "repeat": 0,
+          "all_main_cny": 0.062829,
+          "layered_cny": 0.051527679999999985
+        },
+        {
+          "case_id": "P04",
+          "repeat": 0,
+          "all_main_cny": 0.1321872,
+          "layered_cny": 0.08410472
+        }
+      ]
+    }
+  ]
+}

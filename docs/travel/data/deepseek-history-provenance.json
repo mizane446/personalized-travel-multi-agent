@@ -1,0 +1,20 @@
+{
+  "kind": "historical aggregate; not the new runtime benchmark",
+  "original_project": "多agent旅行",
+  "measurement_date": "2026-10-09",
+  "copied_date": "2026-10-18",
+  "sources": [
+    {
+      "path": "evals/runs/deepseek-benchmark-20261009/metrics.json",
+      "sha256": "7d3dd81c1ffd0cbb435059f292a5332fa4affd8742fd27c2f055b3f195d52013"
+    },
+    {
+      "path": "evals/deepseek-pricing-20261009.json",
+      "sha256": "fe080f503c35c5acc6541e1218c528bd234db0a985d835d822b47f0f083245b8"
+    },
+    {
+      "path": "evals/DeepSeek复测报告.md",
+      "sha256": "00dc98e8653a33ac73b49fb09a68966a1e93bdb956298af28874ca18f5206af3"
+    }
+  ]
+}

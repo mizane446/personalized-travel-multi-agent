@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-18",
+  "model": "gpt-5.6-luna",
+  "provider": "ccgoai relay",
+  "status": "failed_external_queue_limit",
+  "completed_http_responses": 11,
+  "upstream_request_hard_limit": 12,
+  "final_inflight_request_outcome": "unknown after stop",
+  "output_token_limit_per_request": 1600,
+  "child_queue_errors": 3,
+  "search_calls": 0,
+  "evidence_urls": 0,
+  "preference_records": 1,
+  "exported_formats": [],
+  "usage_responses": 4,
+  "known_total_tokens": 16119.0,
+  "cost": "unknown; not an official DeepSeek benchmark"
+}
