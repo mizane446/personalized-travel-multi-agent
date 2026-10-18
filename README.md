@@ -1,261 +1,36 @@
-<p align="center">
-  <img src="assets/banner.png" alt="Hermes Agent" width="100%">
-</p>
+# Hermes 旅行增强
 
-# Hermes Agent ☤
-<p align="center">
-  <a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a> | <a href="https://hermes-agent.nousresearch.com/">Hermes Desktop</a>
-</p>
-<p align="center">
-  <a href="https://hermes-agent.nousresearch.com/docs/"><img src="https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge" alt="Documentation"></a>
-  <a href="https://discord.gg/NousResearch"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
-  <a href="https://github.com/NousResearch/hermes-agent/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License: MIT"></a>
-  <a href="https://nousresearch.com"><img src="https://img.shields.io/badge/Built%20by-Nous%20Research-blueviolet?style=for-the-badge" alt="Built by Nous Research"></a>
-  <a href="README.zh-CN.md"><img src="https://img.shields.io/badge/Lang-中文-red?style=for-the-badge" alt="中文"></a>
-  <a href="README.ur-pk.md"><img src="https://img.shields.io/badge/Lang-اردو-green?style=for-the-badge" alt="اردو"></a>
-  <a href="README.es.md"><img src="https://img.shields.io/badge/Lang-Español-orange?style=for-the-badge" alt="Español"></a>
-</p>
+在完整 Hermes 官方源码与原生 Desktop 上，增加直接搜索、可溯源人物偏好和有来源的旅行方案。增强源码集中在 [travel_extensions](travel_extensions/)，不另写 Agent 运行框架或桌面。
 
-**The self-improving AI agent built by [Nous Research](https://nousresearch.com).** It's the only agent with a built-in learning loop — it creates skills from experience, improves them during use, nudges itself to persist knowledge, searches its own past conversations, and builds a deepening model of who you are across sessions. Run it on a $5 VPS, a GPU cluster, or serverless infrastructure that costs nearly nothing when idle. It's not tied to your laptop — talk to it from Telegram while it works on a cloud VM.
+> 正在迁移。下表是进度唯一入口；只把有验证数据的能力标为完成。[原版 README](https://github.com/NousResearch/hermes-agent/blob/ccc695635094d7615373db267b77f894d978b1a0/README.md) 和 [LICENSE](LICENSE) 保留上游介绍与版权。
 
-Use any model you want — [Nous Portal](https://portal.nousresearch.com), OpenRouter, OpenAI, your own endpoint, and [many others](https://hermes-agent.nousresearch.com/docs/integrations/providers). Switch with `hermes model` — no code changes, no lock-in.
+## 每一步加了什么
 
-<table>
-<tr><td><b>A real terminal interface</b></td><td>Full TUI with multiline editing, slash-command autocomplete, conversation history, interrupt-and-redirect, and streaming tool output.</td></tr>
-<tr><td><b>Lives where you do</b></td><td>Telegram, Discord, Slack, WhatsApp, Signal, and CLI — all from a single gateway process. Voice memo transcription, cross-platform conversation continuity.</td></tr>
-<tr><td><b>A closed learning loop</b></td><td>Agent-curated memory with periodic nudges. Autonomous skill creation after complex tasks. Skills self-improve during use. FTS5 session search with LLM summarization for cross-session recall. <a href="https://github.com/plastic-labs/honcho">Honcho</a> dialectic user modeling. Compatible with the <a href="https://agentskills.io">agentskills.io</a> open standard.</td></tr>
-<tr><td><b>Scheduled automations</b></td><td>Built-in cron scheduler with delivery to any platform. Daily reports, nightly backups, weekly audits — all in natural language, running unattended.</td></tr>
-<tr><td><b>Delegates and parallelizes</b></td><td>Spawn isolated subagents for parallel workstreams. Write Python scripts that call tools via RPC, collapsing multi-step pipelines into zero-context-cost turns.</td></tr>
-<tr><td><b>Runs anywhere, not just your laptop</b></td><td>Seven terminal backends — local, Docker, SSH, Singularity, Modal, Daytona, and Vercel Sandbox. Daytona and Modal offer serverless persistence — your agent's environment hibernates when idle and wakes on demand, costing nearly nothing between sessions. Run it on a $5 VPS or a GPU cluster.</td></tr>
-<tr><td><b>Research-ready</b></td><td>Batch trajectory generation, trajectory compression for training the next generation of tool-calling models.</td></tr>
-</table>
-
----
-
-## Quick Install
-
-### Linux, macOS, WSL2
-
-```bash
-curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
-```
-
-### Windows (native, PowerShell)
-
-> **Heads up:** Native Windows runs Hermes without WSL — CLI, gateway, TUI, and tools all work natively. If you'd rather use WSL2, the Linux/macOS one-liner above works there too. Found a bug? Please [file issues](https://github.com/NousResearch/hermes-agent/issues).
-
-Run this in PowerShell:
-
-```powershell
-iex (irm https://hermes-agent.nousresearch.com/install.ps1)
-```
-
-The source installer delegates Python 3.14, Node.js, npm, ripgrep, FFmpeg,
-and Python dependencies to PM. If Git is absent, it stages the verified Git
-for Windows archive in Hermes' tool store. It does not replace your system Git.
-See [installation methods](https://hermes-agent.nousresearch.com/docs/getting-started/installation)
-for the separate MSIX/App Installer package and its update ownership.
-
-> **Android / Termux:** A signed APT repository is available for aarch64 devices, with a `stable` channel (tagged releases) and a prerelease `canary` channel. The package includes Python, Node.js, and the TUI. Use the [Termux guide](https://hermes-agent.nousresearch.com/docs/getting-started/termux), not the desktop/server installer script.
->
-> **Windows:** Native Windows is fully supported — the PowerShell one-liner above installs everything. If you'd rather use WSL2, the Linux command works there too. Native Windows install lives under `%LOCALAPPDATA%\hermes`; WSL2 installs under `~/.hermes` as on Linux.
-
-After installation:
-
-```bash
-source ~/.bashrc    # reload shell (or: source ~/.zshrc)
-hermes              # start chatting!
-```
-
-### Troubleshooting
-
-#### Windows Defender or antivirus flags `uv.exe` as malware
-
-If your antivirus (Bitdefender, Windows Defender, etc.) quarantines `uv.exe` from the Hermes `bin` folder (`%LOCALAPPDATA%\hermes\bin\uv.exe`), this is a **false positive**. The file is Astral's `uv` — the Rust Python package manager Hermes bundles to manage its Python environment. ML-based antivirus engines commonly flag unsigned Rust binaries that download and install packages.
-
-**To verify your copy is authentic:**
-
-```powershell
-# Install GitHub CLI if needed
-winget install --id GitHub.cli
-
-# Login to GitHub
-gh auth login
-
-# Run verification
-$uv = "$env:LOCALAPPDATA\hermes\bin\uv.exe"
-$ver = (& $uv --version).Split(' ')[1]
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$zip = "$env:TEMP\uv.zip"
-Invoke-WebRequest "https://github.com/astral-sh/uv/releases/download/$ver/uv-x86_64-pc-windows-msvc.zip" -OutFile $zip -UseBasicParsing
-gh attestation verify $zip --repo astral-sh/uv
-Expand-Archive $zip "$env:TEMP\uv_x" -Force
-(Get-FileHash "$env:TEMP\uv_x\uv.exe").Hash -eq (Get-FileHash $uv).Hash
-```
-
-If attestation says "Verification succeeded" and the last line prints `True`, you're good.
-
-**To whitelist Hermes:**
-- **Windows Defender:** Run PowerShell as Admin → `Add-MpPreference -ExclusionPath "$env:LOCALAPPDATA\hermes\bin"`
-- **Bitdefender:** Add an exception in the Bitdefender console (Protection > Antivirus > Settings > Manage Exceptions)
-- Whitelist the **folder**, not the file hash — Hermes updates `uv` and the hash changes every version
-
-For more context, see the upstream Astral reports: [astral-sh/uv#13553](https://github.com/astral-sh/uv/issues/13553), [astral-sh/uv#15011](https://github.com/astral-sh/uv/issues/15011), [astral-sh/uv#10079](https://github.com/astral-sh/uv/issues/10079).
-
----
-
-## Getting Started
-
-```bash
-hermes              # Interactive CLI — start a conversation
-hermes model        # Choose your LLM provider and model
-hermes tools        # Configure which tools are enabled
-hermes config set   # Set individual config values
-hermes config get   # Print individual config values
-hermes gateway      # Start the messaging gateway (Telegram, Discord, etc.)
-hermes setup        # Run the full setup wizard (configures everything at once)
-hermes claw migrate # Migrate from OpenClaw (if coming from OpenClaw)
-hermes update       # Update to the latest version
-hermes doctor       # Diagnose any issues
-```
-
-📖 **[Full documentation →](https://hermes-agent.nousresearch.com/docs/)**
-
----
-
-## Skip the API-key collection — Nous Portal
-
-Hermes works with whatever provider you want — that's not changing. But if you'd rather not collect five separate API keys for the model, web search, image generation, TTS, and a cloud browser, **[Nous Portal](https://portal.nousresearch.com)** covers all of them under one subscription:
-
-- **300+ models** — pick any of them with `/model <name>`
-- **Tool Gateway** — web search, image generation (FAL), text-to-speech (OpenAI), cloud browser (Browser Use), all routed through your sub. No extra accounts.
-
-One command from a fresh install:
-
-```bash
-hermes setup --portal
-```
-
-That logs you in via OAuth, sets Nous as your provider, and turns on the Tool Gateway. Check what's wired up any time with `hermes portal info`. Full details on the [Tool Gateway docs page](https://hermes-agent.nousresearch.com/docs/user-guide/features/tool-gateway).
-
-You can still bring your own keys per-tool whenever you want — the gateway is per-backend, not all-or-nothing.
-
----
-
-## CLI vs Messaging Quick Reference
-
-Hermes has two entry points: start the terminal UI with `hermes`, or run the gateway and talk to it from Telegram, Discord, Slack, WhatsApp, Signal, or Email. Once you're in a conversation, many slash commands are shared across both interfaces.
-
-| Action                         | CLI                                           | Messaging platforms                                                              |
-| ------------------------------ | --------------------------------------------- | -------------------------------------------------------------------------------- |
-| Start chatting                 | `hermes`                                      | Run `hermes gateway setup` + `hermes gateway start`, then send the bot a message |
-| Start fresh conversation       | `/new` or `/reset`                            | `/new` or `/reset`                                                               |
-| Change model                   | `/model [provider:model]`                     | `/model [provider:model]`                                                        |
-| Set a personality              | `/personality [name]`                         | `/personality [name]`                                                            |
-| Retry or undo the last turn    | `/retry`, `/undo`                             | `/retry`, `/undo`                                                                |
-| Compress context / check usage | `/compress`, `/usage`, `/insights [--days N]` | `/compress`, `/usage`, `/insights [days]`                                        |
-| Browse skills                  | `/skills` or `/<skill-name>`                  | `/<skill-name>`                                                                  |
-| Interrupt current work         | `Ctrl+C` or send a new message                | `/stop` or send a new message                                                    |
-| Platform-specific status       | `/platforms`                                  | `/status`, `/sethome`                                                            |
-
-For the full command lists, see the [CLI guide](https://hermes-agent.nousresearch.com/docs/user-guide/cli) and the [Messaging Gateway guide](https://hermes-agent.nousresearch.com/docs/user-guide/messaging).
-
----
-
-## Documentation
-
-All documentation lives at **[hermes-agent.nousresearch.com/docs](https://hermes-agent.nousresearch.com/docs/)**:
-
-| Section                                                                                             | What's Covered                                             |
-| --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [Quickstart](https://hermes-agent.nousresearch.com/docs/getting-started/quickstart)                 | Install → setup → first conversation in 2 minutes          |
-| [CLI Usage](https://hermes-agent.nousresearch.com/docs/user-guide/cli)                              | Commands, keybindings, personalities, sessions             |
-| [Configuration](https://hermes-agent.nousresearch.com/docs/user-guide/configuration)                | Config file, providers, models, all options                |
-| [Messaging Gateway](https://hermes-agent.nousresearch.com/docs/user-guide/messaging)                | Telegram, Discord, Slack, WhatsApp, Signal, Home Assistant |
-| [Security](https://hermes-agent.nousresearch.com/docs/user-guide/security)                          | Command approval, DM pairing, container isolation          |
-| [Tools & Toolsets](https://hermes-agent.nousresearch.com/docs/user-guide/features/tools)            | 40+ tools, toolset system, terminal backends               |
-| [Skills System](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills)              | Procedural memory, Skills Hub, creating skills             |
-| [Memory](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory)                     | Persistent memory, user profiles, best practices           |
-| [MCP Integration](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp)               | Connect any MCP server for extended capabilities           |
-| [Cron Scheduling](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron)              | Scheduled tasks with platform delivery                     |
-| [Context Files](https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files)       | Project context that shapes every conversation             |
-| [Architecture](https://hermes-agent.nousresearch.com/docs/developer-guide/architecture)             | Project structure, agent loop, key classes                 |
-| [Contributing](https://hermes-agent.nousresearch.com/docs/developer-guide/contributing)             | Development setup, PR process, code style                  |
-| [CLI Reference](https://hermes-agent.nousresearch.com/docs/reference/cli-commands)                  | All commands and flags                                     |
-| [Environment Variables](https://hermes-agent.nousresearch.com/docs/reference/environment-variables) | Complete env var reference                                 |
-
----
-
-## Migrating from OpenClaw
-
-If you're coming from OpenClaw, Hermes can automatically import your settings, memories, skills, and API keys.
-
-**During first-time setup:** The setup wizard (`hermes setup`) automatically detects `~/.openclaw` and offers to migrate before configuration begins.
-
-**Anytime after install:**
-
-```bash
-hermes claw migrate              # Interactive migration (full preset)
-hermes claw migrate --dry-run    # Preview what would be migrated
-hermes claw migrate --preset user-data   # Migrate without secrets
-hermes claw migrate --overwrite  # Overwrite existing conflicts
-```
-
-What gets imported:
-
-- **SOUL.md** — persona file
-- **Memories** — MEMORY.md and USER.md entries
-- **Skills** — user-created skills → `~/.hermes/skills/openclaw-imports/`
-- **Command allowlist** — approval patterns
-- **Messaging settings** — platform configs, allowed users, working directory
-- **API keys** — allowlisted secrets (Telegram, OpenRouter, OpenAI, Anthropic, ElevenLabs)
-- **TTS assets** — workspace audio files
-- **Workspace instructions** — AGENTS.md (with `--workspace-target`)
-
-See `hermes claw migrate --help` for all options, or use the `openclaw-migration` skill for an interactive agent-guided migration with dry-run previews.
-
----
-
-## Contributing
-
-We welcome contributions! See the [Contributing Guide](https://hermes-agent.nousresearch.com/docs/developer-guide/contributing) for development setup, code style, and PR process.
-
-Start with the [PM developer workflow](website/docs/reference/package-management.md#developer-workflow)
-for activation, daily use, dependency changes, and leaving the environment.
-[Development Setup](CONTRIBUTING.md#development-setup) covers the separate test environment and verification commands.
-
----
-
-## Community
-
-- 💬 [Discord](https://discord.gg/NousResearch)
-- 📚 [Skills Hub](https://agentskills.io)
-- 🐛 [Issues](https://github.com/NousResearch/hermes-agent/issues)
-- 🔌 [computer-use-linux](https://github.com/avifenesh/computer-use-linux) — Linux desktop-control MCP server for Hermes and other MCP hosts, with AT-SPI accessibility trees, Wayland/X11 input, screenshots, and compositor window targeting.
-- 🔌 [HermesClaw](https://github.com/AaronWong1999/hermesclaw) — Community WeChat bridge: Run Hermes Agent and OpenClaw on the same WeChat account.
-
----
-
-## License
-
-MIT — see [LICENSE](LICENSE).
-
-Built by [Nous Research](https://nousresearch.com).
-
-## 旅行增强：迁移进度与选型记录
-
-本节记录此二次开发分支；上文为 Hermes 官方介绍。[迁移计划 v1](迁移计划-v1.md) 列出范围、复用依据和各阶段验收条件。
-
-| 项目 | 当前状态 | 下一步 |
-| --- | --- | --- |
-| 官方基线 | 已独立浅克隆，源码完整；基线 ccc695635094d7615373db267b77f894d978b1a0 | 隔离运行环境验收 |
-| 官方 Desktop | 已确认桌面与共享前端源码存在，未安装或构建 | 验证原版启动、展示与取消 |
-| 旅行功能 | 尚未迁移 | 豆包 provider → 原生子 Agent → 审查/Wiki/方案 → 桌面/观测 |
-
-| 日期 | 选择 | 理由与取舍 | 实现及验证 |
+| 步骤 | 功能与位置 | 为什么加 | 数据与状态 |
 | --- | --- | --- | --- |
-| 2026-10-18 | 官方完整源码 + 独立增强模块；保留原生桌面 | 原版与增强可追溯；新版接口须重新验收，不照搬旧适配 | 已核查来源、commit、干净初始状态和桌面入口；仅增加计划文档 |
-| 2026-10-18 | 优先原生委派、WebSearchProvider、MemoryProvider 和桌面插件接口 | 复用调度/展示，只补旅行业务与豆包适配；具体接口须运行验证 | 已核查仓内文档，尚未接入；不迁移 Claude Code/高德业务依赖 |
-| 2026-10-18 | 通过官方插件清单评估 Langfuse 2.0.0 | 新版已独立为 hermes-official-plugins/langfuse，避免重复上报实现 | 清单固定 sha c2a95963c442f3f23e4bc6fe0da898e1dd1fb63d；未安装、未发送数据 |
+| 1 | 官方运行时与 Desktop；[验收说明](docs/travel/01-官方基线.md) | 先确定可复用基线，避免重写调度和界面 | 构建成功；113 项桌面单测、17 项委派相关测试通过；隐藏窗口真实后端聊天验收通过（模拟模型） |
+| 2 | 豆包直接 HTTP 搜索 provider | 用户观察旧链路慢，需拆开搜索与模型耗时验证 | 待实现；不预填提速倍数 |
+| 3 | Hermes 原生子 Agent | 复用创建、取消和结果交回 | 待接入；不迁移 Claude Code、高德 |
+| 4 | 旅行质量与来源审查 | 重复候选、过期信息、无来源回答需要显式检查 | 待迁移与对照测试 |
+| 5 | 人物偏好与 LLM Wiki | 保留原话、可查引用、限制更新范围 | 正在核查用户指定的 nashsu/llm_wiki；不预设“消除幻觉”结论 |
+| 6 | 方案版本、导出与桌面全流程 | 输出可保存、可复现、可追踪修改 | 待迁移 |
+| 7 | 官方 Langfuse 插件 | 复用主子 Agent、工具的原生观测 | 待安装；只连接已授权本地服务 |
+| 8 | GitHub 文档、图示、发布检查 | 让读者能复现并检验改进 | 持续更新；未 push |
 
-本轮验证为 Git 与文件/文档检查；未运行应用、模型、桌面或迁移测试。速度提升尚未测量。
+## 选型与决策记录
+
+| 日期 | 采用方案与复用来源 | 理由、取舍与实现状态 |
+| --- | --- | --- |
+| 2026-10-18 | 官方 Hermes ccc6956 + 独立插件 | 保留完整源码与基线标签；浅克隆历史未补全 |
+| 2026-10-18 | WebSearchProvider + 豆包 HTTP API | 独立搜索 API 无需 MCP 进程；分别测量接口耗时与完整回答耗时 |
+| 2026-10-18 | 原生子 Agent、Gateway、Desktop | 复用生命周期和展示，只补旅行协议与权限缺口；未接入 |
+| 2026-10-18 | 官方 Langfuse 2.0.0 | 清单固定 c2a95963c442f3f23e4bc6fe0da898e1dd1fb63d；不自写观测转发器，尚未安装 |
+| 2026-10-18 | 评估用户指定的 nashsu/llm_wiki | 已读中文 README；提供本机 HTTP API，下一步核查实际协议、来源与冲突处理，不复制另一套桌面 |
+
+## 如何看对照数据
+
+每一步记录：问题 → 原版能力 → 新增文件 → 选择理由 → 对照方法 → 结果 → 限制。固定资料测试、真实搜索、真实模型和桌面验收分别标注。注入错误可以证明程序拦截能力，不能当作真实模型幻觉率；历史观察不能当作同条件速度基线。
+
+查看差异：`git diff travel-upstream-baseline-20261018 -- travel_extensions docs/travel README.md`。每个验证完成的阶段单独本地提交，不自动推送。
+
+[迁移计划 v1](迁移计划-v1.md) 保留最初范围与验收条件。最新授权已扩展到全部阶段，当前状态以上表为准。

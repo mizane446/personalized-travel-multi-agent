@@ -325,3 +325,11 @@ native/fts5_cjk/*.so
 /pm/.lock.json.lock
 
 apps/desktop/.dist-build*
+
+# Travel extension runtime is private; only reviewed synthetic evidence is public.
+/.hermes-runtime/
+!/docs/travel/images/
+!/docs/travel/images/*.png
+!/docs/travel/images/*.svg
+!/docs/travel/data/
+!/docs/travel/data/*.json
