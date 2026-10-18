@@ -1,0 +1,13 @@
+_config_version: 12
+plugins:
+  enabled: [web-doubao]
+web:
+  search_backend: doubao
+platform_toolsets:
+  cli: [search, delegation]
+delegation:
+  max_concurrent_children: 3
+  max_spawn_depth: 1
+  inherit_mcp_toolsets: false
+  oneshot_max_children: 3
+  child_timeout_seconds: 120
